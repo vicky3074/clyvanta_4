@@ -1,0 +1,39 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+clyvanta-website/node_modules
+clyvanta-website/.pnp
+clyvanta-website/.pnp.js
+
+# testing
+clyvanta-website/coverage
+
+# next.js
+clyvanta-website/.next/
+clyvanta-website/out/
+clyvanta-website/build
+
+# production
+clyvanta-website/build
+
+# misc
+clyvanta-website/.DS_Store
+clyvanta-website/*.pem
+
+# debug
+clyvanta-website/npm-debug.log*
+clyvanta-website/yarn-debug.log*
+clyvanta-website/yarn-error.log*
+
+# local env files
+clyvanta-website/.env*.local
+
+# vercel
+clyvanta-website/.vercel
+
+# typescript
+clyvanta-website/*.tsbuildinfo
+clyvanta-website/next-env.d.ts
+
+# Claude temporary files
+.claude/
