@@ -2,6 +2,16 @@
 
 **One-page premium website for Clyvanta Inc. - Strategic Technology Consultancy**
 
+## 🎉 Project Status: SETUP COMPLETE - READY FOR DEVELOPMENT
+
+✅ Next.js 14 + TypeScript configured
+✅ Tailwind CSS + Framer Motion installed
+✅ Git repository initialized and pushed to GitHub
+✅ Vercel auto-deployment configured and tested
+✅ Production site live at: **https://clyvanta-4.vercel.app**
+
+**Repository:** https://github.com/vicky3074/clyvanta_4
+
 ---
 
 ## 🚀 Quick Start
@@ -76,20 +86,50 @@ Single-page scroll layout:
 
 ## ⚡ Build & Deploy
 
+### Development (Local)
+
 ```bash
-# Development
+cd clyvanta-website
 npm run dev
-
-# Production build (static export)
-npm run build
-
-# Deploy to Vercel
-vercel
-
-# Or deploy static 'out' folder to any host
+# Open http://localhost:3000
+# Edit files → changes appear automatically (hot reload)
 ```
 
-**No environment variables needed** - fully static site with client-side form handling
+### Production Build (Manual)
+
+```bash
+npm run build
+# Creates static 'out/' folder
+# Can deploy to any static host
+```
+
+### Automatic Deployment (Vercel)
+
+**✅ AUTO-DEPLOYMENT ACTIVE**
+
+Every push to `main` branch automatically:
+1. Triggers Vercel build
+2. Runs `npm run build`
+3. Deploys to production
+4. Updates live site
+
+**No manual deployment needed!**
+
+```bash
+git add .
+git commit -m "feat: add new section"
+git push origin main
+# Vercel automatically deploys in ~1-2 minutes
+```
+
+**Live Site:** https://clyvanta-4.vercel.app
+
+**Vercel Configuration:**
+- Framework: Next.js
+- Root Directory: `./clyvanta-website`
+- Build Command: `next build`
+- Output Directory: `out`
+- Node Version: 24.x
 
 ---
 
@@ -128,6 +168,24 @@ See `WEBSITE_COPY.md` for all website content (copy-paste ready)
 
 ---
 
+## 📂 Git Workflow
+
+**Repository:** https://github.com/vicky3074/clyvanta_4
+
+**SSH Key:** `/Users/vicky/Desktop/Vicky/Ventures/Keys/git-ssh/git-ssh-master-key`
+
+```bash
+# Git is already configured with SSH key
+# Just use normal git commands:
+
+git add .
+git commit -m "feat: your message"
+git push origin main
+# Vercel auto-deploys after push
+```
+
+---
+
 ## 📞 Support
 
 **Email:** hello@clyvanta.com
@@ -135,4 +193,17 @@ See `WEBSITE_COPY.md` for all website content (copy-paste ready)
 
 ---
 
-*Last updated: December 18, 2024*
+## 📋 Next Steps
+
+**Ready for Development:**
+1. Start building components (Hero, Services, Contact Form, etc.)
+2. Copy logo files from `/Users/vicky/Desktop/Vicky/Clyvanta Logo/Final - Clyvanta logo/`
+3. Implement website sections from `WEBSITE_COPY_FINAL.md`
+4. Test locally with `npm run dev`
+5. Push to GitHub → Vercel auto-deploys
+
+**See `PROJECT_STATUS.md` for detailed project status and component checklist.**
+
+---
+
+*Last updated: December 19, 2024*
