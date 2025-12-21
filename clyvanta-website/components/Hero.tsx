@@ -31,7 +31,8 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-clyvanta-blue-dark via-blue-700 to-clyvanta-blue-cyan overflow-hidden pt-32 md:pt-40 pb-20 md:pb-24"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-24 md:py-32 lg:py-40"
+      style={{ backgroundColor: '#4f46e5' }}
     >
       {/* Background Pattern - Subtle */}
       <div className="absolute inset-0 opacity-10">
@@ -99,24 +100,13 @@ export default function Hero() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </h3>
-              <p className="text-blue-100 text-sm md:text-base leading-relaxed">
+              <p className="text-blue-100 text-base md:text-lg leading-relaxed">
                 {pillar.description}
               </p>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Trust Badge */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="text-center mt-12"
-        >
-          <p className="text-sm text-blue-200 italic">
-            Most clients come from referrals. We only take projects where we're genuinely the right fit.
-          </p>
-        </motion.div>
       </div>
     </section>
   )

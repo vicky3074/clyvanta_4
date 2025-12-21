@@ -25,54 +25,60 @@ export default function Header() {
   }
 
   const navLinks = [
-    { name: 'Services', id: 'services' },
+    { name: 'Services', id: 'capabilities' },
     { name: 'How We Work', id: 'how-we-work' },
-    { name: 'Why Clyvanta', id: 'why-clyvanta' },
-    { name: 'Contact', id: 'contact' },
+    { name: 'Who We Help', id: 'who-we-help' },
   ]
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white shadow-md'
-          : 'bg-white/95 backdrop-blur-sm'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 lg:h-24">
+    <header className="fixed top-0 left-0 right-0 z-50 pt-4 md:pt-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+        <div
+          className={`bg-white rounded-2xl transition-all duration-300 ${
+            isScrolled
+              ? 'shadow-lg'
+              : 'shadow-md'
+          }`}
+        >
+          <div className="flex items-center justify-between h-16 lg:h-20 px-4 md:px-6">
           {/* Logo */}
           <button
             onClick={() => scrollToSection('hero')}
             className="flex items-center hover:opacity-80 transition-opacity"
           >
             <img
-              src="/images/logo-1.svg"
+              src="/images/logo.svg"
               alt="Clyvanta"
-              className="h-10 md:h-12 w-auto"
+              className="h-8 md:h-10 w-auto"
             />
           </button>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-gray-700 hover:text-clyvanta-blue-dark transition-colors font-medium"
+                className="text-gray-700 hover:text-clyvanta-blue-dark transition-colors font-medium text-sm"
               >
                 {link.name}
               </button>
             ))}
           </nav>
 
-          {/* CTA Button - Desktop */}
-          <div className="hidden md:block">
+          {/* CTA Buttons - Desktop */}
+          <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={() => scrollToSection('contact')}
-              className="bg-clyvanta-orange text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-200 hover:scale-105"
+              className="text-gray-700 hover:text-clyvanta-blue-dark transition-colors font-medium text-sm"
             >
-              Schedule Consultation
+              Contact Us
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="bg-clyvanta-blue-dark text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-blue-900 transition-colors text-sm"
+            >
+              Get Started
             </button>
           </div>
 
@@ -105,36 +111,43 @@ export default function Header() {
               )}
             </svg>
           </button>
+          </div>
+
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="md:hidden border-t border-gray-200"
+            >
+              <div className="px-4 md:px-6 py-4 space-y-4">
+                {navLinks.map((link) => (
+                  <button
+                    key={link.id}
+                    onClick={() => scrollToSection(link.id)}
+                    className="block w-full text-left text-gray-700 hover:text-clyvanta-blue-dark transition-colors font-medium py-2 text-sm"
+                  >
+                    {link.name}
+                  </button>
+                ))}
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="w-full text-left text-gray-700 hover:text-clyvanta-blue-dark transition-colors font-medium py-2 text-sm"
+                >
+                  Contact Us
+                </button>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="w-full bg-clyvanta-blue-dark text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-900 transition-colors text-sm"
+                >
+                  Get Started
+                </button>
+              </div>
+            </motion.div>
+          )}
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-white border-t border-gray-200"
-        >
-          <div className="px-6 py-4 space-y-4">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left text-gray-700 hover:text-clyvanta-blue-dark transition-colors font-medium py-2"
-              >
-                {link.name}
-              </button>
-            ))}
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="w-full bg-clyvanta-orange text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
-            >
-              Schedule Consultation
-            </button>
-          </div>
-        </motion.div>
-      )}
     </header>
   )
 }
