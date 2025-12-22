@@ -73,27 +73,27 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
       <div className={compact ? 'space-y-6' : 'grid md:grid-cols-2 gap-6'}>
         <div>
           <label htmlFor="email" className="block text-base font-semibold text-white mb-3">
-            Email Address <span className="text-orange-400">*</span>
+            Work Email <span className="text-orange-400">*</span>
           </label>
           <input
             type="email"
             id="email"
             name="email"
             required
-            className="w-full px-5 py-4 bg-slate-900/50 border border-slate-700 text-white rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all placeholder:text-slate-500 text-base"
-            placeholder="john@company.com"
+            className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 text-white rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all placeholder:text-slate-500 text-base"
+            placeholder="jane@company.com"
           />
         </div>
         <div>
           <label htmlFor="phone" className="block text-base font-semibold text-white mb-3">
-            Phone Number
+            Phone Number <span className="text-slate-400 text-sm font-normal">(optional)</span>
           </label>
           <input
             type="tel"
             id="phone"
             name="phone"
-            className="w-full px-5 py-4 bg-slate-900/50 border border-slate-700 text-white rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all placeholder:text-slate-500 text-base"
-            placeholder="+1 (647) 490-9955"
+            className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 text-white rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all placeholder:text-slate-500 text-base"
+            placeholder="+1 (___) ___-____"
           />
         </div>
       </div>
@@ -101,29 +101,29 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
       {/* Company */}
       <div>
         <label htmlFor="company" className="block text-base font-semibold text-white mb-3">
-          Company
+          Company <span className="text-slate-400 text-sm font-normal">(optional)</span>
         </label>
         <input
           type="text"
           id="company"
           name="company"
-          className="w-full px-5 py-4 bg-slate-900/50 border border-slate-700 text-white rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all placeholder:text-slate-500 text-base"
-          placeholder="Company Name"
+          className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 text-white rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all placeholder:text-slate-500 text-base"
+          placeholder="Company name"
         />
       </div>
 
       {/* Message */}
       <div>
         <label htmlFor="message" className="block text-base font-semibold text-white mb-3">
-          Tell us about your project <span className="text-orange-400">*</span>
+          Tell Us About Your Project <span className="text-orange-400">*</span>
         </label>
         <textarea
           id="message"
           name="message"
           required
           rows={compact ? 5 : 8}
-          className="w-full px-5 py-4 bg-slate-900/50 border border-slate-700 text-white rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all resize-none placeholder:text-slate-500 text-base"
-          placeholder="Describe your challenge or project in detail..."
+          className="w-full px-5 py-4 bg-slate-800/50 border border-slate-700 text-white rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all resize-none placeholder:text-slate-500 text-base leading-relaxed"
+          placeholder="What are you trying to build or improve?&#10;Any timelines, constraints, or goals you'd like us to know?"
         />
       </div>
 
