@@ -27,9 +27,12 @@ export default function WhoWeHelp() {
   ]
 
   return (
-    <section id="who-we-help" ref={ref} className="relative py-20 md:py-32 overflow-hidden" style={{ backgroundColor: '#1f2937' }}>
+    <section id="who-we-help" ref={ref} className="relative section-large overflow-hidden bg-section-blue">
+      {/* Animated Gradient Overlay - Subtle Accent */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 via-purple-600/10 to-orange-600/10 animate-pulse"></div>
+
       {/* Background Pattern Overlay */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-[0.03]">
         <div
           className="absolute inset-0"
           style={{
@@ -44,11 +47,15 @@ export default function WhoWeHelp() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-10"
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white">
+          <p className="eyebrow text-gray-400 mb-4">Our Partners</p>
+          <h2 className="heading-section text-white mb-4">
             Who We Help
           </h2>
+          <p className="text-intro text-gray-300 max-w-3xl mx-auto">
+            We partner with organizations at every stage of growth
+          </p>
         </motion.div>
 
         {/* Simple 3-Column Layout */}
@@ -56,20 +63,20 @@ export default function WhoWeHelp() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid md:grid-cols-3 gap-8 md:gap-12"
+          className="grid md:grid-cols-3 gap-12 md:gap-16"
         >
           {audiences.map((audience, index) => (
             <div key={index} className="text-center">
               {/* Accent line */}
-              <div className="mb-4 flex justify-center">
+              <div className="mb-6 flex justify-center">
                 <div className={`w-16 h-1 bg-gradient-to-r ${audience.accentColor} rounded-full`}></div>
               </div>
 
               {/* Content */}
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 leading-tight">
+              <h3 className="heading-card text-white mb-4">
                 {audience.name}
               </h3>
-              <p className="text-base text-white/70 leading-relaxed">
+              <p className="text-body text-white/70" style={{ lineHeight: '1.8' }}>
                 {audience.description}
               </p>
             </div>

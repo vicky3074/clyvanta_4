@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import Link from 'next/link'
 
 export default function FinalCTA() {
   const ref = useRef(null)
@@ -12,11 +13,13 @@ export default function FinalCTA() {
     <section
       id="contact"
       ref={ref}
-      className="relative py-24 md:py-32 lg:py-40 overflow-hidden"
-      style={{ backgroundColor: '#1f2937' }}
+      className="relative section-large overflow-hidden bg-section-blue"
     >
-      {/* Background Pattern Overlay */}
-      <div className="absolute inset-0 opacity-5">
+      {/* Animated Gradient Overlay - Subtle Accent */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 via-purple-600/10 to-orange-600/10 animate-pulse"></div>
+
+      {/* Background + Pattern - More Subtle */}
+      <div className="absolute inset-0 opacity-[0.03]">
         <div
           className="absolute inset-0"
           style={{
@@ -25,53 +28,39 @@ export default function FinalCTA() {
         />
       </div>
 
-
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Heading */}
+          {/* Left Column - Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Let&apos;s Talk About Your Challenge
+            <p className="eyebrow text-blue-200 mb-4">Ready to Ship?</p>
+            <h2 className="heading-display text-white mb-6">
+              Let&apos;s Connect
             </h2>
+            <p className="text-intro text-blue-100">
+              Facing complex technology challenges? Our experts are ready to help you build production-ready systems that actually ship.
+            </p>
           </motion.div>
 
-          {/* Right Column - Text + CTA */}
+          {/* Right Column - Button */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6"
+            className="flex items-center justify-center md:justify-center"
           >
-            <p className="text-base md:text-lg text-gray-200 leading-relaxed">
-              Facing complex technology challenges? Our experts are ready to help you build
-              production-ready systems that actually ship.
-            </p>
-
-            <motion.a
-              href="mailto:hello@clyvanta.com"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center space-x-2 bg-clyvanta-orange hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors shadow-lg hover:shadow-xl"
-            >
-              <span>Contact Us</span>
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <Link href="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 text-white px-10 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:via-red-500 hover:to-orange-500 transition-all shadow-lg hover:shadow-xl hover:shadow-orange-500/50"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </motion.a>
+                Contact Us
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </div>

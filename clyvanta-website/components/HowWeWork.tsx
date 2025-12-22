@@ -13,11 +13,13 @@ export default function HowWeWork() {
     <section
       id="how-we-work"
       ref={ref}
-      className="relative py-24 md:py-32 lg:py-40 overflow-hidden"
-      style={{ backgroundColor: '#4f46e5' }}
+      className="relative section-large overflow-hidden bg-section-blue"
     >
-      {/* Background Pattern Overlay */}
-      <div className="absolute inset-0 opacity-10">
+      {/* Animated Gradient Overlay - Subtle Accent */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 via-purple-600/10 to-orange-600/10 animate-pulse"></div>
+
+      {/* Background Pattern Overlay - More Subtle */}
+      <div className="absolute inset-0 opacity-[0.03]">
         <div
           className="absolute inset-0"
           style={{
@@ -30,22 +32,26 @@ export default function HowWeWork() {
         <div className="grid md:grid-cols-5 gap-12 items-center">
           {/* Left Column - Text Content (3/5 width) */}
           <div className="md:col-span-3">
-            {/* Headline */}
-            <motion.h2
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 md:mb-8 leading-tight"
             >
-              Every Project is Unique. Our Approach Adapts.
-            </motion.h2>
+              <p className="eyebrow text-blue-200 mb-4">Our Methodology</p>
+              <h2 className="heading-section text-white mb-4">
+                Every Project is Unique. Our Approach Adapts.
+              </h2>
+              <p className="text-intro text-blue-100 mb-6">
+                Flexible frameworks, proven results
+              </p>
+            </motion.div>
 
             {/* Main Paragraph */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg md:text-xl leading-relaxed text-blue-100"
+              className="text-body text-blue-100"
             >
               Enterprise AI systems and platform consolidation don&apos;t follow
               cookie-cutter playbooks. Each project brings unique technical
@@ -63,11 +69,11 @@ export default function HowWeWork() {
             className="md:col-span-2 hidden md:block relative"
           >
             <Image
-              src="/images/ai-brain.jpg"
-              alt="AI and Data"
+              src="/images/methodology.png"
+              alt="Our Methodology"
               width={500}
               height={500}
-              className="rounded-lg opacity-90 shadow-2xl"
+              className="rounded-lg opacity-60 shadow-2xl"
             />
           </motion.div>
         </div>

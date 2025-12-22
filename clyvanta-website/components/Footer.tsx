@@ -3,131 +3,93 @@
 import Link from 'next/link'
 
 export default function Footer() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        {/* Main Footer Content */}
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          {/* Company Info */}
-          <div>
-            <img
-              src="/images/logo-1.svg"
-              alt="Clyvanta"
-              className="h-10 w-auto mb-4"
-            />
-            <p className="text-gray-400 leading-relaxed">
-              Strategic Technology Consultancy
-            </p>
-            <p className="text-gray-400 mt-2">
-              Toronto, Canada
+    <footer className="bg-slate-950 text-gray-300">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 md:py-16">
+        {/* Main Footer Content - 5 Columns with Separators */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-6 pb-8 border-b border-gray-800">
+          {/* Column 1: Company Info */}
+          <div className="col-span-2 md:col-span-1">
+            <a href="/" className="inline-block hover:opacity-80 transition-opacity mb-4">
+              <img
+                src="/images/logo-header.png"
+                alt="Clyvanta"
+                className="h-10 w-auto"
+              />
+            </a>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Production-ready AI systems and enterprise software.
             </p>
           </div>
 
-          {/* Services */}
+          {/* Column 2: Services */}
           <div>
-            <h3 className="text-white font-semibold mb-4 uppercase tracking-wide text-sm">
+            <h3 className="text-white font-semibold text-sm mb-4">
               Services
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               <li>
-                <button
-                  onClick={() => scrollToSection('services')}
-                  className="text-gray-400 hover:text-clyvanta-blue-cyan transition-colors text-sm"
+                <Link
+                  href="/#capabilities"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
                 >
-                  Enterprise AI & Intelligent Systems
-                </button>
+                  Data & AI
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('services')}
-                  className="text-gray-400 hover:text-clyvanta-blue-cyan transition-colors text-sm"
+                <Link
+                  href="/#capabilities"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
                 >
-                  Strategic Enterprise Software
-                </button>
+                  Product & Cloud
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('services')}
-                  className="text-gray-400 hover:text-clyvanta-blue-cyan transition-colors text-sm"
+                <Link
+                  href="/#capabilities"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
                 >
                   Digital Transformation
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Column 3: Company */}
           <div>
-            <h3 className="text-white font-semibold mb-4 uppercase tracking-wide text-sm">
+            <h3 className="text-white font-semibold text-sm mb-4">
               Company
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               <li>
-                <button
-                  onClick={() => scrollToSection('how-we-work')}
-                  className="text-gray-400 hover:text-clyvanta-blue-cyan transition-colors text-sm"
+                <Link
+                  href="/#how-we-work"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
                 >
                   How We Work
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('why-clyvanta')}
-                  className="text-gray-400 hover:text-clyvanta-blue-cyan transition-colors text-sm"
-                >
-                  Why Clyvanta
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="text-gray-400 hover:text-clyvanta-blue-cyan transition-colors text-sm"
+                <Link
+                  href="/contact"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
                 >
                   Contact
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact & Legal */}
+          {/* Column 4: Legal */}
           <div>
-            <h3 className="text-white font-semibold mb-4 uppercase tracking-wide text-sm">
-              Contact
-            </h3>
-            <ul className="space-y-3 mb-6">
-              <li>
-                <a
-                  href="mailto:hello@clyvanta.com"
-                  className="text-gray-400 hover:text-clyvanta-blue-cyan transition-colors text-sm"
-                >
-                  hello@clyvanta.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+16474909955"
-                  className="text-gray-400 hover:text-clyvanta-blue-cyan transition-colors text-sm"
-                >
-                  +1 (647) 490-9955
-                </a>
-              </li>
-            </ul>
-
-            <h3 className="text-white font-semibold mb-4 uppercase tracking-wide text-sm">
+            <h3 className="text-white font-semibold text-sm mb-4">
               Legal
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               <li>
                 <Link
                   href="/privacy"
-                  className="text-gray-400 hover:text-clyvanta-blue-cyan transition-colors text-sm"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
                 >
                   Privacy Policy
                 </Link>
@@ -135,29 +97,53 @@ export default function Footer() {
               <li>
                 <Link
                   href="/terms"
-                  className="text-gray-400 hover:text-clyvanta-blue-cyan transition-colors text-sm"
+                  className="text-gray-400 hover:text-white transition-colors text-sm"
                 >
                   Terms of Service
                 </Link>
               </li>
             </ul>
           </div>
-        </div>
 
-        {/* Trust Badges */}
-        <div className="border-t border-gray-800 pt-8 pb-8">
-          <div className="flex flex-wrap items-center justify-center gap-8 opacity-30 grayscale">
-            <div className="text-sm font-semibold text-gray-500">McKinsey</div>
-            <div className="text-sm font-semibold text-gray-500">Standish Group</div>
-            <div className="text-sm font-semibold text-gray-500">BCG</div>
-            <div className="text-sm font-semibold text-gray-500">Harvard Business Review</div>
+          {/* Column 5: Contact */}
+          <div>
+            <h3 className="text-white font-semibold text-sm mb-4">
+              Contact
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="mailto:hello@clyvanta.com"
+                  className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <span>Email</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+16474909955"
+                  className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <span>Phone</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 pt-8 text-center">
-          <p className="text-sm text-gray-500">
+        <div className="pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-gray-500">
             © {new Date().getFullYear()} Clyvanta Inc. All rights reserved.
+          </p>
+          <p className="text-xs text-gray-500">
+            Toronto, Canada
           </p>
         </div>
       </div>

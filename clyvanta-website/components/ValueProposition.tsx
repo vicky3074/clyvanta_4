@@ -9,9 +9,12 @@ export default function ValueProposition() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section ref={ref} className="relative py-16 md:py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: '#1f2937' }}>
+    <section ref={ref} className="relative section-large overflow-hidden bg-section-blue">
+      {/* Animated Gradient Overlay - Subtle Accent */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 via-purple-600/10 to-orange-600/10 animate-pulse"></div>
+
       {/* Background Pattern Overlay */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-[0.03]">
         <div
           className="absolute inset-0"
           style={{
@@ -29,8 +32,9 @@ export default function ValueProposition() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              We Build Systems That Actually Ship.
+            <p className="eyebrow text-blue-200 mb-4">Our Promise</p>
+            <h2 className="heading-display text-white" style={{ maxWidth: '600px' }}>
+              Systems Built for Your Business Reality.
             </h2>
           </motion.div>
 
@@ -39,18 +43,18 @@ export default function ValueProposition() {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6"
+            className="space-y-8"
           >
-            <p className="text-lg md:text-xl leading-relaxed text-gray-300">
-              We optimize for "will this work in production?"—not "how fast can we ship?" Our systems integrate with your existing infrastructure and deliver measurable results from day one.
+            <p className="text-intro text-blue-100" style={{ lineHeight: '1.8' }}>
+              We don't just build software—we deliver secure, reliable solutions that work with your existing operations and drive real business outcomes. No jargon. No abandoned projects. Just technology that makes your business better.
             </p>
 
-            <p className="text-base md:text-lg leading-relaxed text-gray-400">
-              The numbers prove why this matters: only <strong className="text-clyvanta-blue-cyan">16% of projects deliver on time</strong> (Standish Group). Most run <strong className="text-clyvanta-blue-cyan">45% over budget</strong> and deliver <strong className="text-clyvanta-blue-cyan">56% less value</strong> (McKinsey).
+            <p className="text-body text-blue-100/80" style={{ lineHeight: '1.9' }}>
+              The reality: <strong className="text-clyvanta-blue-cyan">84% of technology projects fail</strong> to deliver what was promised (Standish Group). They run <strong className="text-clyvanta-blue-cyan">45% over budget</strong> and deliver <strong className="text-clyvanta-blue-cyan">56% less value</strong> than expected (McKinsey).
             </p>
 
-            <p className="text-lg md:text-xl font-semibold text-clyvanta-blue-cyan">
-              We're in the 16% that actually ship.
+            <p className="text-intro font-semibold text-clyvanta-blue-cyan">
+              We build systems that succeed.
             </p>
           </motion.div>
         </div>

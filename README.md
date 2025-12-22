@@ -1,209 +1,321 @@
 # Clyvanta Website
 
-**One-page premium website for Clyvanta Inc. - Strategic Technology Consultancy**
+**Strategic Technology Consultancy - Premium One-Page Website**
 
-## 🎉 Project Status: SETUP COMPLETE - READY FOR DEVELOPMENT
+## 🎉 Project Status: LIVE & OPERATIONAL
 
-✅ Next.js 14 + TypeScript configured
-✅ Tailwind CSS + Framer Motion installed
-✅ Git repository initialized and pushed to GitHub
-✅ Vercel auto-deployment configured and tested
-✅ Production site live at: **https://clyvanta-4.vercel.app**
-
-**Repository:** https://github.com/vicky3074/clyvanta_4
+✅ Next.js 14 + TypeScript
+✅ Docker-based development environment
+✅ Tailwind CSS + Framer Motion
+✅ Git repository: [github.com/vicky3074/clyvanta_4](https://github.com/vicky3074/clyvanta_4)
+✅ Production site: [clyvanta-4.vercel.app](https://clyvanta-4.vercel.app)
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start (Docker - Recommended)
+
+**Prerequisites:**
+- Docker Desktop installed and running
+- No Node.js installation required!
 
 ```bash
+# Navigate to project
 cd clyvanta-website
-npm install
-npm run dev
+
+# Build Docker image
+docker build -t clyvanta-web .
+
+# Run container
+docker run -d -p 3000:3000 --name clyvanta-dev clyvanta-web
+
+# Open http://localhost:3000
 ```
 
-Open http://localhost:3000
+**Docker Management:**
+```bash
+# Stop container
+docker stop clyvanta-dev
+
+# Start container
+docker start clyvanta-dev
+
+# View logs
+docker logs clyvanta-dev
+
+# Restart after code changes
+docker stop clyvanta-dev && docker rm clyvanta-dev
+docker build -t clyvanta-web .
+docker run -d -p 3000:3000 --name clyvanta-dev clyvanta-web
+```
+
+---
+
+## 💻 Alternative: Local Development (Without Docker)
+
+**⚠️ Important:** This project requires **Node.js 20 LTS**. Node 24+ has compatibility issues.
+
+### Setup with fnm (Fast Node Manager)
+
+```bash
+# Install fnm
+brew install fnm
+
+# Install Node 20
+fnm install 20
+fnm use 20
+
+# Install dependencies
+cd clyvanta-website
+npm install
+
+# Start development server
+npm run dev
+```
 
 ---
 
 ## 📦 Tech Stack
 
-**Framework:** Next.js 14.2.18 + React 18.3.1 + TypeScript 5.6.3
-**Styling:** Tailwind CSS 3.4.17
-**Animations:** Framer Motion 11.11.17
-**Forms:** Web3Forms API
-**Hosting:** Vercel (free tier)
-
-**Node Version Required:** 18.18.0 or 20.x LTS
-
----
-
-## 🔐 Web3Forms Configuration
-
-**Access Key:** `57daab8f-2a1f-419d-952d-22cb97c96213`
-
-**✅ Client-Side Implementation:** Web3Forms is designed for client-side use. The access key can be safely included in your HTML/JSX - it only allows sending emails to your registered email address.
-
-**No environment variables needed** - access key is included directly in the contact form component.
+| Component | Version |
+|-----------|---------|
+| **Framework** | Next.js 14.2.18 |
+| **React** | 18.3.1 |
+| **TypeScript** | 5.6.3 |
+| **Styling** | Tailwind CSS 3.4.17 |
+| **Animations** | Framer Motion 11.11.17 |
+| **Forms** | Web3Forms API |
+| **Hosting** | Vercel (Production) |
+| **Development** | Docker (Node 20 Alpine) |
 
 ---
 
-## 🎨 Design Assets
+## 🏗️ Project Structure
 
-**Logos:** `/Users/vicky/Desktop/Vicky/Clyvanta Logo/Final - Clyvanta logo/`
-- Header: `1.svg` or `3.svg`
-- Colors: Extract from SVG (blue gradient + orange accent)
+```
+clyvanta_4/
+├── clyvanta-website/          # Main Next.js application
+│   ├── app/                   # Next.js App Router
+│   │   ├── layout.tsx         # Root layout
+│   │   ├── page.tsx           # Homepage
+│   │   ├── privacy/page.tsx   # Privacy policy
+│   │   └── terms/page.tsx     # Terms of service
+│   ├── components/            # React components
+│   │   ├── Header.tsx         # Navigation header
+│   │   ├── Hero.tsx           # Hero section
+│   │   ├── Capabilities.tsx   # Services section
+│   │   ├── HowWeWork.tsx      # Process section
+│   │   ├── WhoWeHelp.tsx      # Target audience
+│   │   ├── ValueProposition.tsx
+│   │   ├── FinalCTA.tsx       # Call-to-action
+│   │   ├── Footer.tsx         # Footer
+│   │   └── FloatingWidget.tsx # Contact widget
+│   ├── public/                # Static assets
+│   ├── Dockerfile             # Docker configuration
+│   ├── .dockerignore          # Docker ignore rules
+│   ├── package.json           # Dependencies
+│   ├── tailwind.config.js     # Tailwind configuration
+│   └── tsconfig.json          # TypeScript configuration
+├── Images/                    # Project images
+└── README.md                  # This file
+```
 
-**Contact Info:**
+---
+
+## 🎨 Design System
+
+### Colors
+```javascript
+'clyvanta-blue-dark': '#1E40AF'    // Primary blue
+'clyvanta-blue-cyan': '#06B6D4'    // Accent cyan
+'clyvanta-orange': '#F97316'        // CTA orange
+```
+
+### Typography
+- **Font:** Inter (Google Fonts)
+- **Headings:** Bold, large sizes
+- **Body:** Regular weight, optimized line height
+
+---
+
+## 📄 Website Sections
+
+1. **Hero** - Main headline with 3 service pillars
+2. **Value Proposition** - Core differentiators
+3. **Capabilities** - Detailed service offerings
+4. **Who We Help** - Target audience segments
+5. **How We Work** - 4-step process
+6. **Final CTA** - Call-to-action section
+7. **Footer** - Contact information
+
+**Additional Pages:**
+- `/privacy` - Privacy Policy
+- `/terms` - Terms of Service
+
+---
+
+## 🔐 Forms & Contact
+
+**Web3Forms Integration:**
+- **Access Key:** `57daab8f-2a1f-419d-952d-22cb97c96213`
+- Client-side implementation (secure by design)
+- No backend required
+- Built-in spam protection
+
+**Contact Information:**
 - Email: hello@clyvanta.com
 - Phone: +1 (647) 490-9955
 - Location: Toronto, Canada
 
 ---
 
-## 📄 Website Structure
-
-Single-page scroll layout:
-1. Hero Section
-2. Value Proposition
-3. Services (3 pillars)
-4. How We Work (4 steps)
-5. Why Clyvanta (5 differentiators)
-6. Case Study
-7. Industries
-8. Final CTA
-9. Footer
-
-**Additional Pages:**
-- Privacy Policy (`/privacy`)
-- Terms of Service (`/terms`)
-
-**Components:**
-- Floating contact widget (bottom-right)
-- Footer contact form
-
----
-
-## ⚡ Build & Deploy
-
-### Development (Local)
-
-```bash
-cd clyvanta-website
-npm run dev
-# Open http://localhost:3000
-# Edit files → changes appear automatically (hot reload)
-```
-
-### Production Build (Manual)
-
-```bash
-npm run build
-# Creates static 'out/' folder
-# Can deploy to any static host
-```
+## 🚢 Deployment
 
 ### Automatic Deployment (Vercel)
 
-**✅ AUTO-DEPLOYMENT ACTIVE**
-
-Every push to `main` branch automatically:
-1. Triggers Vercel build
-2. Runs `npm run build`
-3. Deploys to production
-4. Updates live site
-
-**No manual deployment needed!**
+**Every push to `main` automatically deploys to production:**
 
 ```bash
 git add .
-git commit -m "feat: add new section"
+git commit -m "feat: update hero section"
 git push origin main
-# Vercel automatically deploys in ~1-2 minutes
+# Vercel auto-deploys in ~1-2 minutes
 ```
 
 **Live Site:** https://clyvanta-4.vercel.app
 
 **Vercel Configuration:**
-- Framework: Next.js
 - Root Directory: `./clyvanta-website`
+- Framework: Next.js
 - Build Command: `next build`
 - Output Directory: `out`
-- Node Version: 24.x
+- Node Version: 20.x
 
----
-
-## 🎯 Key Features
-
-✅ Professional animations (Framer Motion)
-✅ Mobile-first responsive design
-✅ Secure form handling (server-side)
-✅ Static export for fast loading
-✅ SEO optimized
-
----
-
-## 📝 Content Source
-
-See `WEBSITE_COPY.md` for all website content (copy-paste ready)
-
----
-
-## 🔧 Important Notes
-
-**Framer Motion:**
-- Requires `'use client'` directive in Next.js 14 App Router
-- Compatible with React 18.3.1
-
-**Web3Forms:**
-- Client-side implementation (recommended by Web3Forms)
-- Direct POST to `https://api.web3forms.com/submit`
-- Access key is safe to include in client-side code
-- Built-in spam protection on Web3Forms servers
-
-**Static Export:**
-- Configured with `output: "export"` in next.config.js
-- No server-side routes needed
-- Can deploy to any static hosting (Vercel, Netlify, GitHub Pages, etc.)
-
----
-
-## 📂 Git Workflow
-
-**Repository:** https://github.com/vicky3074/clyvanta_4
-
-**SSH Key:** `/Users/vicky/Desktop/Vicky/Ventures/Keys/git-ssh/git-ssh-master-key`
+### Manual Build
 
 ```bash
-# Git is already configured with SSH key
-# Just use normal git commands:
-
-git add .
-git commit -m "feat: your message"
-git push origin main
-# Vercel auto-deploys after push
+cd clyvanta-website
+npm run build
+# Creates static 'out/' folder
 ```
 
 ---
 
-## 📞 Support
+## 🔧 Development Workflow
 
-**Email:** hello@clyvanta.com
+### Making Changes
+
+1. **Start Docker container** (if not running):
+   ```bash
+   docker start clyvanta-dev
+   ```
+
+2. **Edit code** in your IDE (changes require rebuild for Docker)
+
+3. **Rebuild and restart** to see changes:
+   ```bash
+   docker stop clyvanta-dev && docker rm clyvanta-dev
+   docker build -t clyvanta-web .
+   docker run -d -p 3000:3000 --name clyvanta-dev clyvanta-web
+   ```
+
+4. **Push to production**:
+   ```bash
+   git add .
+   git commit -m "feat: your change"
+   git push origin main
+   ```
+
+### Hot Reload (Local Development Only)
+
+For faster development with hot reload, use local development instead of Docker:
+```bash
+npm run dev
+# Changes appear instantly without rebuild
+```
+
+---
+
+## 📚 Git Configuration
+
+**Repository:** https://github.com/vicky3074/clyvanta_4
+**SSH Key:** `/Users/vicky/Desktop/Vicky/Ventures/Keys/git-ssh/git-ssh-master-key`
+
+Git is pre-configured with SSH authentication. Just use normal git commands.
+
+---
+
+## 🐛 Troubleshooting
+
+### Port 3000 Already in Use
+
+```bash
+# Find and kill process on port 3000
+lsof -i :3000
+kill -9 <PID>
+
+# Or use different port with Docker
+docker run -d -p 3001:3000 --name clyvanta-dev clyvanta-web
+# Access at http://localhost:3001
+```
+
+### Docker Container Won't Start
+
+```bash
+# Remove existing container
+docker stop clyvanta-dev && docker rm clyvanta-dev
+
+# Rebuild and restart
+docker build -t clyvanta-web .
+docker run -d -p 3000:3000 --name clyvanta-dev clyvanta-web
+```
+
+### Node Version Issues (Local Development)
+
+**Error:** Module not found, compilation errors
+**Solution:** Use Node 20 LTS (not Node 24)
+
+```bash
+fnm use 20
+node --version  # Should show v20.x.x
+```
+
+---
+
+## 📊 Performance
+
+- **Build Time:** ~7 seconds (Docker)
+- **Dev Server Ready:** ~1.4 seconds
+- **Page Load:** < 2 seconds (static export)
+- **Bundle Size:** Optimized with Next.js automatic code splitting
+
+---
+
+## 🎯 Next Steps
+
+**Development Roadmap:**
+- [ ] Content updates and refinements
+- [ ] Additional case studies
+- [ ] Blog section implementation
+- [ ] SEO optimization
+- [ ] Analytics integration
+- [ ] Custom domain setup
+
+---
+
+## 📞 Support & Contact
+
+**Technical Issues:** Open an issue on [GitHub](https://github.com/vicky3074/clyvanta_4/issues)
+**Business Inquiries:** hello@clyvanta.com
 **Phone:** +1 (647) 490-9955
 
 ---
 
-## 📋 Next Steps
+## 📝 Notes
 
-**Ready for Development:**
-1. Start building components (Hero, Services, Contact Form, etc.)
-2. Copy logo files from `/Users/vicky/Desktop/Vicky/Clyvanta Logo/Final - Clyvanta logo/`
-3. Implement website sections from `WEBSITE_COPY_FINAL.md`
-4. Test locally with `npm run dev`
-5. Push to GitHub → Vercel auto-deploys
-
-**See `PROJECT_STATUS.md` for detailed project status and component checklist.**
+- **Why Docker?** Node 24 on macOS has [known npm freezing issues](https://github.com/npm/cli/issues/8368). Docker provides a stable, isolated environment.
+- **Framer Motion:** Requires `'use client'` directive in Next.js 14 App Router
+- **Static Export:** Configured for optimal performance and hosting flexibility
 
 ---
 
-*Last updated: December 19, 2024*
+*Last updated: December 21, 2024*
