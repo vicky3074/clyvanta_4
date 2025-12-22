@@ -5,6 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 7rem; /* Account for fixed header (pt-4 md:pt-6 + h-16 lg:h-20 + spacing) */
   }
 
   body {
