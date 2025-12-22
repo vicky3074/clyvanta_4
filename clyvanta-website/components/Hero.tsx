@@ -35,7 +35,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden section-hero bg-section-blue"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden section-hero bg-section-blue pt-32 md:pt-40"
     >
       {/* Animated Gradient Overlay - Subtle Accent */}
       <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 via-purple-600/10 to-orange-600/10 animate-pulse"></div>
@@ -47,13 +47,13 @@ export default function Hero() {
         }} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full pb-16">
         {/* Main Headline */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-center mb-20 md:mb-24"
+          className="text-center mb-16 md:mb-20"
         >
           <h1 className="heading-display text-white mb-6">
             We Build Enterprise Systems That Ship.
@@ -86,12 +86,12 @@ export default function Hero() {
           </Link>
         </motion.div>
 
-        {/* Three Pillars - No boxes, with dividers */}
+        {/* Three Pillars - Clean Cards with Underlines (ExaLogic Style) */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
-          className="grid md:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto"
+          className="grid gap-6 md:gap-8 max-w-4xl mx-auto"
         >
           {pillars.map((pillar, index) => (
             <motion.button
@@ -100,16 +100,16 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className={`py-6 text-left cursor-pointer ${index !== 2 ? 'md:border-r border-white/20' : ''} ${index === 0 ? 'md:pr-8 lg:pr-12' : index === 1 ? 'md:px-8 lg:px-12' : 'md:pl-8 lg:pl-12'}`}
+              whileHover={{ x: 5 }}
+              className="group text-left cursor-pointer pb-6 border-b border-white/20 hover:border-white/40 transition-all"
             >
-              <h3 className="heading-card text-clyvanta-blue-cyan mb-4 flex items-center gap-2 group">
+              <h3 className="heading-card text-white mb-2 flex items-center gap-2">
                 {pillar.title}
-                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </h3>
-              <p className="text-body text-blue-100">
+              <p className="text-body text-blue-100/70">
                 {pillar.description}
               </p>
             </motion.button>
