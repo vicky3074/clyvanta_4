@@ -86,12 +86,12 @@ export default function Hero() {
           </Link>
         </motion.div>
 
-        {/* Three Pillars - Clean Cards with Underlines (ExaLogic Style) */}
+        {/* Three Pillars - Horizontal on Desktop, Vertical on Mobile */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
-          className="grid gap-6 md:gap-8 max-w-4xl mx-auto"
+          className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto"
         >
           {pillars.map((pillar, index) => (
             <motion.button
@@ -100,8 +100,8 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-              whileHover={{ x: 5 }}
-              className="group text-left cursor-pointer pb-6 border-b border-white/20 hover:border-white/40 transition-all"
+              whileHover={{ y: -5 }}
+              className="group text-left cursor-pointer pb-6 border-b md:border-b-0 md:border-r border-white/20 last:border-r-0 last:border-b-0 hover:border-white/40 transition-all md:pr-6 md:last:pr-0"
             >
               <h3 className="heading-card text-white mb-2 flex items-center gap-2">
                 {pillar.title}
