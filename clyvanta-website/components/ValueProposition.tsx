@@ -33,7 +33,7 @@ export default function ValueProposition() {
             transition={{ duration: 0.8 }}
           >
             <p className="eyebrow text-blue-200 mb-4">Our Promise</p>
-            <h2 className="heading-display text-white" style={{ maxWidth: '600px' }}>
+            <h2 className="heading-display text-white max-w-[600px]">
               Systems Built for Your Business Reality.
             </h2>
           </motion.div>
@@ -45,11 +45,11 @@ export default function ValueProposition() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-8"
           >
-            <p className="text-intro text-blue-100" style={{ lineHeight: '1.8' }}>
+            <p className="text-intro text-blue-100 leading-[1.8]">
               We don't just build software—we deliver secure, reliable solutions that work with your existing operations and drive real business outcomes. No jargon. No abandoned projects. Just technology that makes your business better.
             </p>
 
-            <p className="text-body text-blue-100/80" style={{ lineHeight: '1.9' }}>
+            <p className="text-body text-blue-100/80 leading-[1.9]">
               The reality: <strong className="text-clyvanta-blue-cyan">84% of technology projects fail</strong> to deliver what was promised (Standish Group). They run <strong className="text-clyvanta-blue-cyan">45% over budget</strong> and deliver <strong className="text-clyvanta-blue-cyan">56% less value</strong> than expected (McKinsey).
             </p>
 

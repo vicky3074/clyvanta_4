@@ -51,7 +51,7 @@ export default function HowWeWork() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-body text-blue-100"
+              className="text-body text-blue-100 max-w-3xl"
             >
               Enterprise AI systems and platform consolidation don&apos;t follow
               cookie-cutter playbooks. Each project brings unique technical

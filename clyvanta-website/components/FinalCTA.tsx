@@ -56,7 +56,7 @@ export default function FinalCTA() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 text-white px-10 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:via-red-500 hover:to-orange-500 transition-all shadow-lg hover:shadow-xl hover:shadow-orange-500/50"
+                className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 text-white px-10 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:via-red-500 hover:to-orange-500 transition-all shadow-lg hover:shadow-xl hover:shadow-orange-500/50 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-950 focus:outline-none"
               >
                 Contact Us
               </motion.button>

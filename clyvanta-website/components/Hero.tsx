@@ -66,7 +66,7 @@ export default function Hero() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:via-red-500 hover:to-orange-500 transition-all shadow-lg hover:shadow-xl hover:shadow-orange-500/50 inline-flex items-center space-x-2"
+              className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-orange-600 hover:via-red-500 hover:to-orange-500 transition-all shadow-lg hover:shadow-xl hover:shadow-orange-500/50 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-950 focus:outline-none inline-flex items-center space-x-2"
             >
               <span>Contact Us</span>
               <svg
@@ -101,7 +101,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="group text-left cursor-pointer pb-6 border-b md:border-b-0 md:border-r border-white/20 last:border-r-0 last:border-b-0 hover:border-white/40 transition-all md:pr-6 md:last:pr-0"
+              className="group text-left cursor-pointer pb-6 border-b md:border-b-0 md:border-r border-white/20 last:border-r-0 last:border-b-0 hover:border-white/40 transition-all md:pr-6 md:last:pr-0 focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-950 focus:outline-none rounded-lg focus:p-4"
             >
               <h3 className="heading-card text-white mb-2 flex items-center gap-2">
                 {pillar.title}

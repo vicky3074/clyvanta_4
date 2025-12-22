@@ -49,7 +49,7 @@ export default function Header() {
               {/* Logo */}
               <a
                 href="/"
-                className="flex items-center hover:opacity-80 transition-opacity"
+                className="flex items-center hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-900 rounded-lg"
               >
                 <img
                   src="/images/logo-header.png"
@@ -59,12 +59,12 @@ export default function Header() {
               </a>
 
               {/* Desktop Navigation - Centered */}
-              <nav className="hidden md:flex items-center space-x-10">
+              <nav className="hidden md:flex items-center space-x-10 font-sans">
                 {navLinks.map((link) => (
                   <button
                     key={link.id}
                     onClick={() => scrollToSection(link.id)}
-                    className="text-white/90 hover:text-white transition-colors text-base font-medium relative group"
+                    className="text-white/90 hover:text-white transition-colors text-base font-semibold relative group py-2 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-900 rounded"
                   >
                     {link.name}
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 transition-all group-hover:w-full"></span>
@@ -75,7 +75,7 @@ export default function Header() {
               {/* CTA Button - Desktop */}
               <a
                 href="/contact"
-                className="hidden md:block bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 text-white px-7 py-3 rounded-lg font-semibold hover:from-orange-600 hover:via-red-500 hover:to-orange-500 transition-all hover:shadow-lg hover:shadow-orange-500/40 text-base"
+                className="hidden md:block bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 text-white px-7 py-3 rounded-lg font-semibold hover:from-orange-600 hover:via-red-500 hover:to-orange-500 transition-all hover:shadow-lg hover:shadow-orange-500/40 text-base font-sans focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-900"
               >
                 Contact Us
               </a>
@@ -83,7 +83,7 @@ export default function Header() {
               {/* Mobile CTA Button */}
               <a
                 href="/contact"
-                className="md:hidden bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:from-orange-600 hover:via-red-500 hover:to-orange-500 transition-all text-sm"
+                className="md:hidden bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 text-white px-5 py-3 rounded-lg font-semibold hover:from-orange-600 hover:via-red-500 hover:to-orange-500 transition-all text-sm font-sans focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-900"
               >
                 Contact
               </a>
