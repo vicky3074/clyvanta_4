@@ -22,14 +22,14 @@ export default function Capabilities() {
       title: 'Product & Cloud',
       description:
         'We build custom software and AI-powered SaaS products that become mission-critical business infrastructure. Platform consolidation. Custom integrations between disparate systems. Turn your idea into scalable revenue.',
-      image: '/images/capabilities-product.png',
+      image: '/images/capabilities-product-new.png',
     },
     {
       id: 'digital-transformation',
       title: 'Digital Transformation',
       description:
         'We modernize legacy systems or build your first proper software to replace Excel spreadsheets and manual processes. Whether you\'re running on decades-old infrastructure or managing everything in spreadsheets.',
-      image: '/images/capabilities-digital.png',
+      image: '/images/capabilities-digital-new.png',
     },
   ]
 
@@ -106,33 +106,27 @@ export default function Capabilities() {
                     }}></div>
                   </div>
 
-                  {/* Content Grid - Alternating Layout */}
+                  {/* Content Grid - Alternating Layout with Square Image Support */}
                   <div className="relative z-10 w-full grid md:grid-cols-12 gap-0">
                     {isEven ? (
                       <>
-                        {/* Image Left - 3 columns with gradient fade on all sides */}
-                        <div className="md:col-span-3 relative h-[200px] md:h-[220px]">
-                          <Image
-                            src={capability.image}
-                            alt={capability.title}
-                            fill
-                            className="object-cover rounded-l-2xl"
-                          />
-                          {/* Gradient fade on all 4 sides of image - subtle */}
-                          <div className="absolute inset-0 rounded-l-2xl">
-                            {/* Top gradient */}
-                            <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-slate-900/60 via-slate-900/30 to-transparent"></div>
-                            {/* Bottom gradient */}
-                            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-900/60 via-slate-900/30 to-transparent"></div>
-                            {/* Left gradient */}
-                            <div className="absolute top-0 bottom-0 left-0 w-16 bg-gradient-to-r from-slate-900/60 via-slate-900/30 to-transparent"></div>
-                            {/* Right gradient - blend into text */}
-                            <div className="absolute top-0 bottom-0 right-0 w-20 bg-gradient-to-l from-slate-900/70 via-slate-900/40 to-transparent"></div>
+                        {/* Image Left - 4 columns for better square image display */}
+                        <div className="md:col-span-4 relative aspect-square md:aspect-auto md:h-full">
+                          <div className="relative w-full h-full min-h-[280px] md:min-h-[300px]">
+                            <Image
+                              src={capability.image}
+                              alt={capability.title}
+                              fill
+                              className="object-cover object-center rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none"
+                              sizes="(max-width: 768px) 100vw, 33vw"
+                            />
+                            {/* Subtle vignette overlay for better blend */}
+                            <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-slate-900/40 rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none"></div>
                           </div>
                         </div>
 
-                        {/* Text Right - 9 columns */}
-                        <div className="md:col-span-9 p-6 md:p-8 lg:p-10">
+                        {/* Text Right - 8 columns */}
+                        <div className="md:col-span-8 p-6 md:p-8 lg:p-10 flex flex-col justify-center">
                           <h3 className="heading-subsection text-white mb-4">
                             {capability.title}
                           </h3>
@@ -143,8 +137,8 @@ export default function Capabilities() {
                       </>
                     ) : (
                       <>
-                        {/* Text Left - 9 columns */}
-                        <div className="md:col-span-9 p-6 md:p-8 lg:p-10 order-2 md:order-1">
+                        {/* Text Left - 8 columns */}
+                        <div className="md:col-span-8 p-6 md:p-8 lg:p-10 order-2 md:order-1 flex flex-col justify-center">
                           <h3 className="heading-subsection text-white mb-4">
                             {capability.title}
                           </h3>
@@ -153,24 +147,18 @@ export default function Capabilities() {
                           </p>
                         </div>
 
-                        {/* Image Right - 3 columns with gradient fade on all sides */}
-                        <div className="md:col-span-3 relative h-[200px] md:h-[220px] order-1 md:order-2">
-                          <Image
-                            src={capability.image}
-                            alt={capability.title}
-                            fill
-                            className="object-cover rounded-r-2xl"
-                          />
-                          {/* Gradient fade on all 4 sides of image - subtle */}
-                          <div className="absolute inset-0 rounded-r-2xl">
-                            {/* Top gradient */}
-                            <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-slate-900/60 via-slate-900/30 to-transparent"></div>
-                            {/* Bottom gradient */}
-                            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-900/60 via-slate-900/30 to-transparent"></div>
-                            {/* Right gradient */}
-                            <div className="absolute top-0 bottom-0 right-0 w-16 bg-gradient-to-l from-slate-900/60 via-slate-900/30 to-transparent"></div>
-                            {/* Left gradient - blend into text */}
-                            <div className="absolute top-0 bottom-0 left-0 w-20 bg-gradient-to-r from-slate-900/70 via-slate-900/40 to-transparent"></div>
+                        {/* Image Right - 4 columns for better square image display */}
+                        <div className="md:col-span-4 relative aspect-square md:aspect-auto md:h-full order-1 md:order-2">
+                          <div className="relative w-full h-full min-h-[280px] md:min-h-[300px]">
+                            <Image
+                              src={capability.image}
+                              alt={capability.title}
+                              fill
+                              className="object-cover object-center rounded-t-2xl md:rounded-r-2xl md:rounded-tl-none"
+                              sizes="(max-width: 768px) 100vw, 33vw"
+                            />
+                            {/* Subtle vignette overlay for better blend */}
+                            <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-slate-900/40 rounded-t-2xl md:rounded-r-2xl md:rounded-tl-none"></div>
                           </div>
                         </div>
                       </>
