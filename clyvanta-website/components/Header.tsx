@@ -15,9 +15,15 @@ export default function Header() {
   }, [])
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    // Check if we're on the homepage
+    if (window.location.pathname === '/') {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      // Navigate to homepage with hash
+      window.location.href = `/#${sectionId}`
     }
   }
 
