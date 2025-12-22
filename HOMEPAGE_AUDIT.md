@@ -1,516 +1,456 @@
-# Clyvanta Homepage Component Audit
-**Date:** December 21, 2025
-**Auditor:** Claude
-**Scope:** Full homepage design, typography, spacing, colors, content hierarchy
+# Clyvanta Homepage Design System Audit & Implementation Plan
+
+**Date**: December 22, 2024  
+**Auditor**: Claude Code  
+**Design System Reference**: `/Users/vicky/.claude/skills/design-system.md`  
+**Selected Fonts**: **Manrope Bold (Headings) + Inter (Body)**  
+**Status**: 🚀 Ready for Implementation
 
 ---
 
 ## Executive Summary
 
-### Critical Issues Found
-1. **Inconsistent Typography Scale** - Font sizes vary significantly between sections
-2. **Padding Inconsistency** - Vertical spacing ranges from py-12 to py-40
-3. **Missing Subheadings** - Several sections lack supporting text/context
-4. **Color Scheme Inconsistency** - Mix of inline styles and Tailwind classes
-5. **Content Hierarchy Issues** - Some sections need better information architecture
+This audit evaluates the Clyvanta homepage against professional design system standards from Google Fonts, U.S. Web Design System (USWDS), and WCAG accessibility guidelines. Following proper design and development best practices.
 
-### Overall Assessment
-- **Typography:** ⚠️ Needs Standardization
-- **Spacing/Padding:** ⚠️ Inconsistent
-- **Color System:** ⚠️ Mixed approaches
-- **Content Hierarchy:** ⚠️ Missing context in places
-- **Accessibility:** ✅ Generally good
-- **Responsiveness:** ✅ Good
+**Overall Grade**: B- → **Target**: A
+
+### Key Findings
+- ✅ Solid responsive foundation
+- ✅ Good component structure
+- ⚠️ Incomplete typography system
+- ⚠️ Color palette needs structure
+- ⚠️ Missing accessibility features (focus states)
+- ⚠️ Some inline styles need conversion to Tailwind
 
 ---
 
-## Component-by-Component Analysis
+## Typography System: Manrope + Inter
 
-### 1. Hero Section
+### Selected Font Pairing
 
-**Current State:**
+**Headings**: Manrope Bold (700)  
+**Body**: Inter Regular (400)  
+**Accent**: Inter Semi-Bold (600)
+
+**Why this works**:
+- Bold distinctive headings with proven readable body text
+- Used by modern tech companies
+- Two font files (Manrope Bold + Inter Variable)
+- Great contrast between display and body text
+
+### Font Loading
+
+```typescript
+// app/layout.tsx
+import { Inter, Manrope } from 'next/font/google'
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  weight: ['700'],
+  variable: '--font-manrope',
+  display: 'swap',
+})
 ```
-Heading: text-4xl md:text-5xl lg:text-6xl
-Subheading: text-xl md:text-2xl
-Padding: py-24 md:py-32 lg:py-40
-Background: Inline style (#2563eb)
-```
-
-**Issues:**
-- ❌ Background color uses inline style instead of Tailwind class
-- ❌ Excessive padding on large screens (py-40 = 160px)
-- ⚠️ Three pillar cards have no visual hierarchy enhancement
-
-**Recommendations:**
-1. Add eyebrow text above main headline (e.g., "Strategic Technology Consultancy")
-2. Reduce max padding to py-32 for consistency
-3. Use Tailwind bg-blue-600 instead of inline style
-4. Add subtle hover effects to pillar cards
-
-**Typography Grade:** A-
-**Spacing Grade:** B
-**Color Grade:** B-
 
 ---
 
-### 2. Value Proposition Section
+## Issues Found & Implementation Checklist
 
-**Current State:**
-```
-Heading: text-4xl md:text-5xl lg:text-6xl
-Body Text: text-lg md:text-xl (primary), text-base md:text-lg (secondary)
-Padding: py-16 md:py-24 lg:py-32
-Background: Inline style (#1f2937)
-Stats: Strong text in clyvanta-blue-cyan
-```
+### 🔴 HIGH PRIORITY - Must Fix Immediately
 
-**Issues:**
-- ❌ Background color uses inline style instead of Tailwind
-- ⚠️ No eyebrow/section label
-- ⚠️ Large heading without context
-- ✅ Good use of emphasis on statistics
+#### ✅ 1. Update Font System in layout.tsx
+**File**: `clyvanta-website/app/layout.tsx`  
+**Status**: ⏳ Pending
 
-**Recommendations:**
-1. Add eyebrow text: "Why Clyvanta" or "Our Promise"
-2. Use Tailwind bg-gray-800 instead of inline style
-3. Consider reducing max padding (py-32 → py-24)
-4. Strong typography hierarchy is good - keep it
-
-**Typography Grade:** A
-**Spacing Grade:** B+
-**Color Grade:** B
+**Action**:
+- Import Manrope and Inter from next/font/google
+- Apply font variables to body element
+- Add font-display: swap for performance
 
 ---
 
-### 3. Capabilities Section
+#### ✅ 2. Define Complete Typography Classes
+**File**: `clyvanta-website/app/globals.css`  
+**Status**: ⏳ Pending
 
-**Current State:**
-```
-Section Heading: text-3xl md:text-4xl lg:text-5xl
-Card Titles: text-2xl md:text-3xl lg:text-4xl
-Card Text: text-base md:text-lg
-Padding: py-12 md:py-16
-Background: Inline style (#2563eb)
-```
+**Issue**: Components use `.heading-section`, `.heading-subsection`, `.heading-card`, `.eyebrow` but they're undefined
 
-**Issues:**
-- ❌ **CRITICAL:** Padding is too small (py-12 md:py-16) compared to other sections
-- ❌ Background uses inline style
-- ❌ Section heading "Our Capabilities" is generic
-- ⚠️ No subheading explaining what makes capabilities unique
-- ⚠️ Card gradients are complex but lack consistent branding
-
-**Recommendations:**
-1. **INCREASE PADDING** to py-20 md:py-28 for visual balance
-2. Add subheading: "Three ways we deliver systems that ship"
-3. Rewrite section heading: "What We Build" or "Our Core Services"
-4. Use bg-blue-600 instead of inline style
-5. Simplify gradient overlays in cards
-
-**Typography Grade:** B+
-**Spacing Grade:** C (too compact)
-**Color Grade:** B-
-
----
-
-### 4. Who We Help Section
-
-**Current State:**
-```
-Heading: text-3xl md:text-4xl
-Card Titles: text-xl md:text-2xl
-Card Text: text-base
-Padding: py-20 md:py-32
-Background: Inline style (#1f2937)
-Accent lines: Gradient colored (good)
-```
-
-**Issues:**
-- ❌ Background uses inline style
-- ❌ **MISSING SUBHEADING** - Heading appears abruptly with no context
-- ⚠️ Section feels disconnected from rest of page
-- ⚠️ Small heading (text-3xl) compared to other sections
-- ⚠️ Minimal content - just 3 short cards
-
-**Recommendations:**
-1. **ADD SUBHEADING:** "We partner with organizations at every stage of growth"
-2. Increase heading to text-3xl md:text-4xl lg:text-5xl for consistency
-3. Use bg-gray-800 instead of inline style
-4. Add more context/detail to audience descriptions
-5. Consider merging with another section or expanding content
-
-**Typography Grade:** B-
-**Spacing Grade:** A-
-**Color Grade:** B
-**Content Grade:** C (lacks context)
-
----
-
-### 5. How We Work Section
-
-**Current State:**
-```
-Heading: text-3xl md:text-4xl lg:text-5xl
-Body Text: text-lg md:text-xl
-Padding: py-24 md:py-32 lg:py-40
-Background: Inline style (#2563eb)
-Image: ai-brain.jpg (500x500)
-```
-
-**Issues:**
-- ❌ Background uses inline style
-- ❌ **CRITICAL:** Same excessive padding as Hero (py-40 = 160px)
-- ❌ **MISSING SUBHEADING** - Jumps straight to philosophical statement
-- ⚠️ Image has no caption or context
-- ⚠️ Only one paragraph of content for such large section
-
-**Recommendations:**
-1. **ADD EYEBROW TEXT:** "Our Methodology"
-2. **ADD SUBHEADING:** "Flexible frameworks, proven results"
-3. Reduce max padding to py-24 md:py-32
-4. Add 2-3 bullet points or process steps
-5. Add image caption
-6. Use bg-blue-600 instead of inline style
-
-**Typography Grade:** A-
-**Spacing Grade:** C (too much padding)
-**Color Grade:** B-
-**Content Grade:** C (needs more substance)
-
----
-
-### 6. Final CTA Section
-
-**Current State:**
-```
-Heading: text-4xl md:text-5xl
-Body Text: text-lg
-Padding: py-20 md:py-24
-Background: bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 (✅ Tailwind)
-Button: bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600
-```
-
-**Issues:**
-- ✅ Good use of Tailwind gradient classes
-- ⚠️ No eyebrow/section indicator
-- ⚠️ Generic "Let's Connect" heading
-- ✅ Good padding consistency
-- ✅ Good visual separation with gradient
-
-**Recommendations:**
-1. Add eyebrow: "Ready to Ship?"
-2. Consider more action-oriented heading
-3. Typography and spacing are solid - minimal changes needed
-
-**Typography Grade:** A
-**Spacing Grade:** A
-**Color Grade:** A-
-
----
-
-## Typography System Analysis
-
-### Current Font Sizes in Use
-
-**Headings:**
-- H1 (Hero): `text-4xl md:text-5xl lg:text-6xl` (36px → 48px → 60px)
-- H2 Large: `text-4xl md:text-5xl lg:text-6xl` (36px → 48px → 60px)
-- H2 Medium: `text-3xl md:text-4xl lg:text-5xl` (30px → 36px → 48px)
-- H2 Small: `text-3xl md:text-4xl` (30px → 36px)
-- H3: `text-2xl md:text-3xl lg:text-4xl` (24px → 30px → 36px)
-- H3 Small: `text-xl md:text-2xl` (20px → 24px)
-
-**Body Text:**
-- Large: `text-lg md:text-xl` (18px → 20px)
-- Medium: `text-base md:text-lg` (16px → 18px)
-- Small: `text-base` (16px)
-
-### Recommended Standardized Scale
-
+**Solution**:
 ```css
-/* Headings */
-.heading-xl: text-4xl md:text-5xl lg:text-6xl (Hero sections only)
-.heading-lg: text-3xl md:text-4xl lg:text-5xl (Major section headings)
-.heading-md: text-2xl md:text-3xl lg:text-4xl (Subsection headings)
-.heading-sm: text-xl md:text-2xl (Card/Component titles)
+/* Heading Typography - Manrope Bold */
+.heading-display {
+  @apply text-4xl md:text-5xl lg:text-6xl font-bold text-white;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
 
-/* Body Text */
-.text-hero: text-xl md:text-2xl (Hero supporting text)
-.text-large: text-lg md:text-xl (Primary body, section intros)
-.text-base: text-base md:text-lg (Standard body text)
-.text-small: text-sm md:text-base (Secondary text)
+.heading-section {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold text-white;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.heading-subsection {
+  @apply text-2xl md:text-3xl lg:text-4xl font-bold text-white;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.heading-card {
+  @apply text-xl md:text-2xl font-bold;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* Body Typography - Inter */
+.text-hero {
+  @apply text-xl md:text-2xl;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.text-intro {
+  @apply text-lg md:text-xl;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.text-body {
+  @apply text-base md:text-lg leading-relaxed;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 400;
+}
 
 /* Supporting Text */
-.eyebrow: text-sm md:text-base font-semibold uppercase tracking-wide
+.eyebrow {
+  @apply text-sm uppercase tracking-wider font-semibold;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  letter-spacing: 0.1em;
+}
+
+/* Apply Inter to body by default */
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
 ```
 
 ---
 
-## Spacing/Padding Analysis
+#### ✅ 3. Fix Tailwind Config - Complete Color Palette
+**File**: `clyvanta-website/tailwind.config.js`  
+**Status**: ⏳ Pending
 
-### Current Padding Values
-
-| Section | Padding | Pixels (mobile → desktop) |
-|---------|---------|---------------------------|
-| Hero | py-24 md:py-32 lg:py-40 | 96px → 128px → 160px |
-| Value Proposition | py-16 md:py-24 lg:py-32 | 64px → 96px → 128px |
-| Capabilities | py-12 md:py-16 | 48px → 64px |
-| Who We Help | py-20 md:py-32 | 80px → 128px |
-| How We Work | py-24 md:py-32 lg:py-40 | 96px → 128px → 160px |
-| Final CTA | py-20 md:py-24 | 80px → 96px |
-
-### Issues Identified
-- ❌ **Inconsistent range:** 48px to 160px (3.3x difference)
-- ❌ **Capabilities section too tight** (py-12 md:py-16)
-- ❌ **Hero & How We Work too spacious** (py-40 = 160px)
-- ❌ **No standardized pattern**
-
-### Recommended Standardized Spacing
-
-```css
-/* Section Padding */
-.section-hero: py-20 md:py-32 (80px → 128px) - For Hero only
-.section-large: py-16 md:py-24 (64px → 96px) - For major sections
-.section-standard: py-12 md:py-20 (48px → 80px) - For regular sections
-.section-compact: py-10 md:py-16 (40px → 64px) - For dense content
-
-/* Apply to current sections */
-Hero → py-20 md:py-32
-Value Proposition → py-16 md:py-24
-Capabilities → py-16 md:py-24 (INCREASE from current)
-Who We Help → py-16 md:py-24
-How We Work → py-16 md:py-24 (DECREASE from current)
-Final CTA → py-16 md:py-24
-```
-
----
-
-## Color System Analysis
-
-### Current Issues
-
-1. **Inline Styles vs Tailwind**
-   - ❌ Hero: `style={{ backgroundColor: '#2563eb' }}`
-   - ❌ Value Prop: `style={{ backgroundColor: '#1f2937' }}`
-   - ❌ Capabilities: `style={{ backgroundColor: '#2563eb' }}`
-   - ❌ Who We Help: `style={{ backgroundColor: '#1f2937' }}`
-   - ❌ How We Work: `style={{ backgroundColor: '#2563eb' }}`
-   - ✅ Final CTA: `bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800`
-
-2. **Brand Colors**
-   - Custom colors defined but not consistently used:
-     - `clyvanta-blue-dark: #1E40AF`
-     - `clyvanta-blue-cyan: #06B6D4`
-     - `clyvanta-orange: #F97316`
-
-### Color Mapping Issues
-
-| Current Inline | Tailwind Equivalent | Usage |
-|----------------|---------------------|-------|
-| #2563eb | bg-blue-600 | Hero, Capabilities, How We Work |
-| #1f2937 | bg-gray-800 | Value Prop, Who We Help |
-| - | bg-gradient-to-br from-slate-900 via-blue-900... | Final CTA |
-
-### Recommended Fix
-Replace ALL inline background styles with Tailwind classes:
-
+**Current Issue**:
 ```javascript
-// Hero, Capabilities, How We Work
-style={{ backgroundColor: '#2563eb' }}
-→ className="bg-blue-600"
+colors: {
+  'clyvanta-blue-dark': '#1E40AF',
+  'clyvanta-blue-cyan': '#06B6D4',
+  'clyvanta-orange': '#F97316',
+}
+```
 
-// Value Proposition, Who We Help
-style={{ backgroundColor: '#1f2937' }}
-→ className="bg-gray-800"
+**Problems**:
+- Only 3 colors defined
+- No neutral scale
+- No semantic colors
+- No hover state variants
+
+**Solution**:
+```javascript
+theme: {
+  extend: {
+    colors: {
+      primary: {
+        DEFAULT: '#2563EB', // Blue-600
+        dark: '#1D4ED8',    // Blue-700 (hover)
+        light: '#3B82F6',   // Blue-500
+      },
+      secondary: {
+        DEFAULT: '#F97316', // Orange-500
+        dark: '#EA580C',    // Orange-600 (hover)
+        light: '#FB923C',   // Orange-400
+      },
+      neutral: {
+        950: '#020617',
+        900: '#0F172A',
+        800: '#1E293B',
+        700: '#334155',
+        600: '#475569',
+        400: '#94A3B8',
+        200: '#E2E8F0',
+        100: '#F1F5F9',
+      },
+      semantic: {
+        success: '#10B981',
+        warning: '#F59E0B',
+        error: '#EF4444',
+        info: '#3B82F6',
+      },
+    },
+    fontFamily: {
+      sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+      heading: ['var(--font-manrope)', 'system-ui', 'sans-serif'],
+    },
+  },
+},
 ```
 
 ---
 
-## Content Hierarchy Issues
+#### ✅ 4. Fix bg-section-blue Gradient
+**File**: `clyvanta-website/app/globals.css`  
+**Status**: ⏳ Pending
 
-### Sections Missing Context
+**Issue**: Uses `blue-950` which doesn't exist in Tailwind (only goes to 900)
 
-1. **Value Proposition** ❌
-   - Missing: Eyebrow text or section label
-   - Fix: Add "Why Clyvanta" or "Our Difference"
+**Current**:
+```css
+.bg-section-blue {
+  @apply bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950;
+}
+```
 
-2. **Capabilities** ❌
-   - Missing: Subheading explaining approach
-   - Fix: Add "Three ways we deliver systems that ship"
+**Solution** (solid dark for clean professional look):
+```css
+.bg-section-blue {
+  @apply bg-slate-950;
+}
+```
 
-3. **Who We Help** ❌ **CRITICAL**
-   - Missing: Subheading providing context
-   - Fix: Add "We partner with organizations at every stage of growth"
+---
 
-4. **How We Work** ❌ **CRITICAL**
-   - Missing: Eyebrow and subheading
-   - Fix: Add "Our Methodology" + "Flexible frameworks, proven results"
+#### ✅ 5. Add Focus States for Accessibility
+**Files**: Hero.tsx, Header.tsx, FinalCTA.tsx, Footer.tsx  
+**Status**: ⏳ Pending
 
-5. **Final CTA** ⚠️
-   - Missing: Eyebrow could enhance urgency
-   - Fix: Add "Ready to Ship?" above heading
+**Issue**: No visible focus indicators (WCAG violation)
 
-### Recommended Eyebrow Pattern
+**Solution Examples**:
+```typescript
+// CTA Button
+<button className="... focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none">
 
-```jsx
-<div className="text-center mb-4">
-  <span className="text-sm md:text-base font-semibold uppercase tracking-wide text-blue-300">
-    Section Label
-  </span>
-</div>
-<h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-4">
-  Main Heading
-</h2>
-<p className="text-lg md:text-xl text-gray-300 text-center max-w-3xl mx-auto mb-12">
-  Supporting subheading that provides context
+// Navigation Link
+<Link className="... focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:rounded focus:outline-none">
+
+// Pillar Cards in Hero
+<motion.button className="... focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-slate-950 focus:outline-none">
+```
+
+---
+
+### 🟡 MEDIUM PRIORITY - Fix Soon
+
+#### ✅ 6. Remove Inline Styles from ValueProposition.tsx
+**File**: `clyvanta-website/components/ValueProposition.tsx`  
+**Status**: ⏳ Pending
+
+**Issues**:
+- Line 36: `style={{ maxWidth: '600px' }}`
+- Line 48: `style={{ lineHeight: '1.8' }}`
+- Line 52: `style={{ lineHeight: '1.9' }}`
+
+**Solution**:
+```typescript
+// Before
+<h2 className="heading-display text-white" style={{ maxWidth: '600px' }}>
+
+// After
+<h2 className="heading-display text-white max-w-[600px]">
+
+// Before
+<p className="text-intro text-blue-100" style={{ lineHeight: '1.8' }}>
+
+// After
+<p className="text-intro text-blue-100 leading-[1.8]">
+```
+
+---
+
+#### ✅ 7. Add Max-Width to Long Text Blocks
+**Files**: HowWeWork.tsx, ValueProposition.tsx  
+**Status**: ⏳ Pending
+
+**Issue**: Long paragraphs without width constraints (optimal: 45-80 characters per line)
+
+**Solution**:
+```typescript
+<p className="text-body text-blue-100 max-w-3xl">
+  Enterprise AI systems and platform consolidation...
 </p>
 ```
 
 ---
 
-## Responsive Design Analysis
+#### ✅ 8. Standardize Color Usage
+**Files**: All components  
+**Status**: ⏳ Pending
 
-### Current Breakpoints Used
-- Mobile: Default (< 768px)
-- Tablet: `md:` (≥ 768px)
-- Desktop: `lg:` (≥ 1024px)
+**Issue**: Mix of `text-blue-100`, `text-white`, `text-gray-400`, custom colors
 
-### Issues
-- ✅ Generally good responsive scaling
-- ⚠️ Some sections only use md: without lg: refinement
-- ⚠️ Text sizes jump significantly at breakpoints
-- ✅ Grid layouts adapt well
-
-### Recommendations
-1. Ensure all heading sizes have 3 breakpoints (base, md, lg)
-2. Test intermediate sizes (iPad Pro, Surface)
-3. Add max-width constraints to prevent overly wide text blocks
+**Semantic Color Guide**:
+- Primary text on dark: `text-white`
+- Secondary text on dark: `text-neutral-200` (was text-blue-100)
+- Tertiary text on dark: `text-neutral-400` (was text-gray-400)
+- Accent text: `text-primary-light` or `text-secondary`
+- Eyebrows: `text-neutral-400`
 
 ---
 
-## Priority Fixes (Ranked)
+### 🟢 LOW PRIORITY - Enhancement
 
-### 🔴 Critical (Do First)
-1. **Standardize all section padding** - Currently 48px to 160px range
-2. **Add missing subheadings** to Who We Help and How We Work
-3. **Fix Capabilities section padding** - Increase from py-12 to py-16 md:py-24
-4. **Replace all inline background styles** with Tailwind classes
+#### ✅ 9. Normalize Gap Spacing
+**File**: ValueProposition.tsx  
+**Status**: ⏳ Pending
 
-### 🟡 High Priority
-5. **Standardize typography scale** - Create consistent heading hierarchy
-6. **Add eyebrow text** to all major sections
-7. **Enhance Capabilities section heading** - Make it less generic
-8. **Reduce Hero & How We Work padding** - py-40 is excessive
+**Issue**: Uses `lg:gap-20` (80px) - not in standard 8pt grid
 
-### 🟢 Medium Priority
-9. Add more content to How We Work section
-10. Expand Who We Help descriptions
-11. Add captions to images
-12. Enhance pillar cards with hover effects
-
-### 🔵 Low Priority (Polish)
-13. Create custom component classes for repeated patterns
-14. Add micro-interactions
-15. Optimize gradient complexity
-16. Add loading animations
+**Solution**: Replace with `lg:gap-16` (64px)
 
 ---
 
-## Recommended Design System
+#### ✅ 10. Extract Repeated Patterns
+**Files**: All section components  
+**Status**: ⏳ Pending
 
-### Typography Classes to Implement
+**Issue**: Animated gradient and pattern overlay repeated in every section
 
+**Solution**:
 ```css
-/* Create in globals.css */
-@layer components {
-  .heading-display {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
-  }
-
-  .heading-section {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
-  }
-
-  .heading-subsection {
-    @apply text-2xl md:text-3xl lg:text-4xl font-bold leading-tight;
-  }
-
-  .heading-card {
-    @apply text-xl md:text-2xl font-bold leading-tight;
-  }
-
-  .text-hero {
-    @apply text-xl md:text-2xl leading-relaxed;
-  }
-
-  .text-intro {
-    @apply text-lg md:text-xl leading-relaxed;
-  }
-
-  .text-body {
-    @apply text-base md:text-lg leading-relaxed;
-  }
-
-  .eyebrow {
-    @apply text-sm md:text-base font-semibold uppercase tracking-wide;
-  }
+.section-overlay-gradient {
+  @apply absolute inset-0 bg-gradient-to-tr from-blue-600/10 via-purple-600/10 to-orange-600/10 animate-pulse;
 }
-```
 
-### Spacing Classes
-
-```css
-@layer components {
-  .section-hero {
-    @apply py-20 md:py-32;
-  }
-
-  .section-large {
-    @apply py-16 md:py-24;
-  }
-
-  .section-standard {
-    @apply py-12 md:py-20;
-  }
+.section-overlay-pattern {
+  @apply absolute inset-0 opacity-[0.03];
+  background-image: url("data:image/svg+xml,...");
 }
 ```
 
 ---
 
-## Final Recommendations Summary
+## Component-Specific Notes
 
-### Immediate Actions
-1. Create standardized spacing system (section-hero, section-large classes)
-2. Add missing subheadings to 4 sections
-3. Replace all inline background colors with Tailwind
-4. Fix Capabilities section padding
+### Hero.tsx ✅
+- Recently fixed spacing (pt-32 md:pt-40)
+- Horizontal 3-column layout working
+- **Needs**: Focus states on CTA and pillar cards
 
-### Content Improvements
-1. Add eyebrow text to all major sections
-2. Rewrite "Our Capabilities" to "What We Build"
-3. Expand How We Work with process steps
-4. Add context to Who We Help
+### Capabilities.tsx ✅
+- Square images working well
+- Aspect ratio handling correct
+- **Needs**: Color contrast verification
 
-### Visual Polish
-1. Standardize typography scale
-2. Simplify gradient overlays
-3. Add consistent hover effects
-4. Improve content hierarchy with better spacing
+### ValueProposition.tsx ⚠️
+- **Needs**: Remove inline styles
+- **Needs**: Add max-width to text blocks
+- **Needs**: Standardize colors
 
----
+### WhoWeHelp.tsx ⚠️
+- Uses `text-gray-400` (should be `text-neutral-400`)
 
-## Score Summary
+### HowWeWork.tsx ⚠️
+- **Needs**: max-width on paragraph
 
-| Category | Current Score | Target Score |
-|----------|---------------|--------------|
-| Typography | B | A |
-| Spacing/Padding | C+ | A |
-| Color System | B- | A |
-| Content Hierarchy | C | A |
-| Responsiveness | A- | A |
-| Accessibility | A- | A |
-| **Overall** | **B-** | **A** |
+### FinalCTA.tsx ✅
+- Clean layout
+- **Needs**: Focus state on button
 
 ---
 
-*End of Audit*
+## Implementation Order
+
+### Phase 1: Typography Foundation (20 min)
+1. ✅ Update layout.tsx with Manrope + Inter
+2. ✅ Update globals.css with complete typography system
+3. ✅ Update tailwind.config.js with font families
+
+### Phase 2: Color System (15 min)
+4. ✅ Fix tailwind.config.js color palette
+5. ✅ Fix bg-section-blue gradient
+6. ✅ Standardize color usage in components
+
+### Phase 3: Accessibility (15 min)
+7. ✅ Add focus states to all interactive elements
+8. ✅ Test keyboard navigation
+
+### Phase 4: Polish (15 min)
+9. ✅ Remove inline styles from ValueProposition.tsx
+10. ✅ Add max-width to text blocks
+11. ✅ Normalize gap spacing
+
+### Phase 5: Testing & Deployment (15 min)
+12. ✅ Build and test locally
+13. ✅ Deploy to Vercel
+14. ✅ Verify on live site
+
+**Total Estimated Time**: 1.5 hours
+
+---
+
+## Testing Checklist
+
+### Typography
+- [ ] All headings use Manrope Bold
+- [ ] All body text uses Inter
+- [ ] Line heights correct (1.1-1.25 headings, 1.5+ body)
+- [ ] Letter spacing applied to headings
+- [ ] Fonts load without layout shift
+
+### Colors
+- [ ] All components use semantic color names
+- [ ] Text contrast meets WCAG AA (4.5:1)
+- [ ] No hardcoded hex values in components
+- [ ] Hover states use defined variants
+
+### Accessibility
+- [ ] All buttons have focus states
+- [ ] All links have focus states
+- [ ] Keyboard navigation works
+- [ ] Focus indicators are visible
+- [ ] Tab order is logical
+
+### Responsive
+- [ ] Mobile (375px) displays correctly
+- [ ] Tablet (768px) displays correctly
+- [ ] Desktop (1440px) displays correctly
+- [ ] Text remains readable at all sizes
+- [ ] No horizontal scroll at any size
+
+---
+
+## Resources
+
+- **Design System Skill**: /Users/vicky/.claude/skills/design-system.md
+- **Manrope Font**: https://fonts.google.com/specimen/Manrope
+- **Inter Font**: https://fonts.google.com/specimen/Inter
+- **Contrast Checker**: https://webaim.org/resources/contrastchecker/
+- **WCAG Guidelines**: https://www.w3.org/WAI/WCAG21/quickref/
+
+---
+
+## Notes
+
+- Following USWDS and Google Fonts best practices
+- Implementing WCAG AA accessibility standards
+- Using 8pt grid system for spacing
+- Prioritizing performance with font-display: swap
+- Semantic color naming for maintainability
+
+---
+
+**Status**: 🚀 Ready to implement all fixes
+**Next Action**: Start Phase 1 - Typography Foundation
