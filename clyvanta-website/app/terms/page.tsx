@@ -1,115 +1,40 @@
 import Link from 'next/link'
+import { getLegalPage } from '@/lib/sanity'
+import PortableText from '@/components/PortableText'
 
-export default function TermsOfService() {
+export default async function TermsOfService() {
+  const page = await getLegalPage('terms-of-service')
+
+  if (!page) {
+    return (
+      <main className="min-h-screen bg-slate-950 pt-32 pb-20 relative overflow-hidden">
+        <div className="relative max-w-4xl mx-auto px-6 lg:px-8">
+          <h1 className="heading-display text-white mb-8">Terms of Service</h1>
+          <p className="text-gray-300">Content not found. Please check back later.</p>
+        </div>
+      </main>
+    )
+  }
+
+  const lastUpdated = new Date(page.lastUpdated).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+
   return (
     <main className="min-h-screen bg-slate-950 pt-32 pb-20 relative overflow-hidden">
       <div className="relative max-w-4xl mx-auto px-6 lg:px-8">
         <h1 className="heading-display text-white mb-8">
-          Terms of Service
+          {page.title}
         </h1>
 
         <div className="prose prose-lg max-w-none">
           <p className="text-blue-200 mb-8 font-sans">
-            Last updated: December 19, 2024
+            Last updated: {lastUpdated}
           </p>
 
-          <section className="mb-8">
-            <h2 className="heading-card text-white mb-4">Agreement to Terms</h2>
-            <p className="text-body text-blue-100 mb-4">
-              By accessing and using the Clyvanta website, you agree to be bound by these Terms
-              of Service and all applicable laws and regulations. If you do not agree with any of
-              these terms, you are prohibited from using this site.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="heading-card text-white mb-4">Use of Website</h2>
-            <p className="text-body text-blue-100 mb-4">
-              This website is provided for informational purposes about Clyvanta's strategic
-              technology consultancy services. You may use this website for the following purposes:
-            </p>
-            <ul className="list-disc pl-6 text-blue-100 space-y-2 mb-4 font-sans">
-              <li>Learning about our services and capabilities</li>
-              <li>Contacting us for consultation inquiries</li>
-              <li>Reviewing case studies and service information</li>
-            </ul>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="heading-card text-white mb-4">Intellectual Property</h2>
-            <p className="text-body text-blue-100 mb-4">
-              The content, design, graphics, and other materials on this website are owned by or
-              licensed to Clyvanta Inc. and are protected by copyright and other intellectual
-              property laws. You may not reproduce, distribute, or create derivative works from
-              this content without express written permission.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="heading-card text-white mb-4">Professional Services</h2>
-            <p className="text-body text-blue-100 mb-4">
-              Information about our services on this website is for general informational purposes
-              only and does not constitute a binding offer or contract. All professional
-              engagements are subject to separate written agreements that outline the specific
-              scope, terms, and conditions of work.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="heading-card text-white mb-4">Disclaimer of Warranties</h2>
-            <p className="text-body text-blue-100 mb-4">
-              This website and its content are provided "as is" without warranties of any kind,
-              either express or implied. While we strive to keep information accurate and
-              up-to-date, we make no representations or warranties about the completeness,
-              accuracy, or reliability of any information on this site.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="heading-card text-white mb-4">Limitation of Liability</h2>
-            <p className="text-body text-blue-100 mb-4">
-              Clyvanta Inc. shall not be liable for any indirect, incidental, special,
-              consequential, or punitive damages resulting from your use or inability to use this
-              website, even if we have been advised of the possibility of such damages.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="heading-card text-white mb-4">Modifications to Terms</h2>
-            <p className="text-body text-blue-100 mb-4">
-              We reserve the right to modify these Terms of Service at any time. Changes will be
-              effective immediately upon posting to this website. Your continued use of the
-              website after any changes constitutes acceptance of the new terms.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="heading-card text-white mb-4">Governing Law</h2>
-            <p className="text-body text-blue-100 mb-4">
-              These Terms of Service are governed by and construed in accordance with the laws of
-              the Province of Ontario, Canada, without regard to its conflict of law provisions.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="heading-card text-white mb-4">Contact Information</h2>
-            <p className="text-body text-blue-100 mb-4">
-              If you have any questions about these Terms of Service, please contact us:
-            </p>
-            <p className="text-blue-100 font-sans">
-              Clyvanta Inc.
-              <br />
-              Email:{' '}
-              <a href="mailto:hello@clyvanta.com" className="text-blue-300 hover:text-orange-400 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-950 rounded">
-                hello@clyvanta.com
-              </a>
-              <br />
-              Phone:{' '}
-              <a href="tel:+16474909955" className="text-blue-300 hover:text-orange-400 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-950 rounded">
-                +1 (647) 490-9955
-              </a>
-            </p>
-          </section>
+          <PortableText value={page.content} />
         </div>
 
         <div className="mt-12">
