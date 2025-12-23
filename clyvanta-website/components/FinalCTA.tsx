@@ -36,12 +36,12 @@ export default function FinalCTA() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="eyebrow text-blue-200 mb-4">Ready to Ship?</p>
+            <p className="eyebrow text-blue-200 mb-4">Ready to Get Started?</p>
             <h2 className="heading-display text-white mb-6">
               Let&apos;s Connect
             </h2>
             <p className="text-intro text-blue-100">
-              Facing complex technology challenges? Our experts are ready to help you build production-ready systems that actually ship.
+              Facing complex technology challenges? Our experts are ready to help you build systems that go live and drive measurable outcomes.
             </p>
           </motion.div>
 

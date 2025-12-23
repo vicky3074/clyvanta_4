@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Clyvanta - Production-Ready AI, Cloud & Digital Transformation',
-    description: 'We build enterprise systems that ship. Data & AI solutions, custom product & cloud platforms, and digital transformation that actually works.',
+    description: 'We build enterprise systems that deliver results. Data & AI solutions, custom product & cloud platforms, and digital transformation that actually works.',
     url: 'https://www.clyvanta.com',
     siteName: 'Clyvanta',
     images: [
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Clyvanta - Production-Ready AI, Cloud & Digital Transformation',
-    description: 'We build enterprise systems that ship. Data & AI solutions, custom product & cloud platforms, and digital transformation that actually works.',
+    description: 'We build enterprise systems that deliver results. Data & AI solutions, custom product & cloud platforms, and digital transformation that actually works.',
     images: ['/images/logo-square.png'],
   },
 }

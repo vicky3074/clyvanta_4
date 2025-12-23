@@ -56,10 +56,10 @@ export default function Hero() {
           className="text-center mb-16 md:mb-20"
         >
           <h1 className="heading-display text-white mb-6">
-            We Build Enterprise Systems That Ship.
+            We Build Enterprise Systems That Deliver Results.
           </h1>
           <p className="text-hero text-blue-100 mb-8 max-w-3xl mx-auto">
-            Production-ready AI, cloud infrastructure, and digital transformation that can't afford to fail.
+            Solutions that go live, integrate seamlessly, and deliver measurable results from day one.
           </p>
 
           <Link href="/contact">

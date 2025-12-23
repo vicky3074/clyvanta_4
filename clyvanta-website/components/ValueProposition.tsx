@@ -46,15 +46,15 @@ export default function ValueProposition() {
             className="space-y-8"
           >
             <p className="text-intro text-blue-100 leading-[1.8]">
-              We don't just build software—we deliver secure, reliable solutions that work with your existing operations and drive real business outcomes. No jargon. No abandoned projects. Just technology that makes your business better.
+              We design and deliver secure, production-grade platforms that integrate with complex, existing environments and support mission-critical operations. No noise. No experiments at your expense. Just dependable systems that stand up to enterprise demands.
             </p>
 
             <p className="text-body text-blue-100/80 leading-[1.9]">
-              The reality: <strong className="text-clyvanta-blue-cyan">84% of technology projects fail</strong> to deliver what was promised (Standish Group). They run <strong className="text-clyvanta-blue-cyan">45% over budget</strong> and deliver <strong className="text-clyvanta-blue-cyan">56% less value</strong> than expected (McKinsey).
+              Industry research has consistently shown that a large share of major IT initiatives arrive late, exceed budget, or fall short on scope and value. McKinsey's work on large-scale IT programs reports average budget overruns of around <strong className="text-clyvanta-blue-cyan">45%</strong> and realized value at roughly <strong className="text-clyvanta-blue-cyan">half of what was originally forecast</strong>.
             </p>
 
             <p className="text-intro font-semibold text-clyvanta-blue-cyan">
-              We build systems that succeed.
+              Our engagements are structured to sit on the right side of those numbers. That means clear governance, production-focused delivery, and platforms that integrate cleanly, scale reliably, and deliver measurable outcomes for large organizations.
             </p>
           </motion.div>
         </div>

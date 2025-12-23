@@ -57,12 +57,9 @@ export default function Capabilities() {
           className="text-center mb-12 md:mb-16"
         >
           <p className="eyebrow text-blue-200 mb-4">What We Build</p>
-          <h2 className="heading-section text-white mb-4">
+          <h2 className="heading-section text-white">
             Our Capabilities
           </h2>
-          <p className="text-intro text-blue-100 max-w-3xl mx-auto">
-            Three ways we deliver systems that ship
-          </p>
         </motion.div>
 
         {/* Alternating Layout with Gradient Fade */}

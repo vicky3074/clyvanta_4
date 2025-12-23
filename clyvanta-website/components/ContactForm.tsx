@@ -8,7 +8,7 @@ interface ContactFormProps {
 
 export default function ContactForm({ compact = false }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
   const [error, setError] = useState('')
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -27,11 +27,9 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
       const data = await response.json()
 
       if (data.success) {
-        setIsSubmitted(true)
+        setShowSuccessModal(true)
         // Reset form
         ;(e.target as HTMLFormElement).reset()
-        // Reset success message after 5 seconds
-        setTimeout(() => setIsSubmitted(false), 5000)
       } else {
         throw new Error(data.message || 'Something went wrong')
       }
@@ -40,6 +38,10 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  const closeModal = () => {
+    setShowSuccessModal(false)
   }
 
   return (
@@ -148,16 +150,6 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
         </button>
       </div>
 
-      {/* Success Message */}
-      {isSubmitted && (
-        <div className="p-5 bg-green-900/30 border-2 border-green-500/50 rounded-xl text-green-300 flex items-center gap-3 animate-fade-in">
-          <svg className="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span className="font-semibold">Message sent successfully! We'll get back to you soon.</span>
-        </div>
-      )}
-
       {/* Error Message */}
       {error && (
         <div className="p-5 bg-red-900/30 border-2 border-red-500/50 rounded-xl text-red-300 flex items-center gap-3 animate-fade-in">
@@ -165,6 +157,49 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span className="font-semibold">{error}</span>
+        </div>
+      )}
+
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+          <div className="relative bg-slate-900 border-2 border-green-500/50 rounded-2xl shadow-2xl shadow-green-500/20 max-w-md w-full p-8 animate-scale-in">
+            {/* Close button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-full p-1"
+              aria-label="Close"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Success icon */}
+            <div className="flex justify-center mb-6">
+              <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center">
+                <svg className="w-12 h-12 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Message */}
+            <div className="text-center">
+              <h3 className="text-2xl font-bold text-white mb-3">
+                Thank You!
+              </h3>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                We'll review your message and respond within 24-48 hours.
+              </p>
+              <button
+                onClick={closeModal}
+                className="w-full bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 text-white px-8 py-3 rounded-xl text-base font-semibold hover:from-orange-600 hover:via-red-500 hover:to-orange-500 transition-all shadow-lg hover:shadow-xl hover:shadow-orange-500/50 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-900 focus:outline-none"
+              >
+                Close
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </form>
