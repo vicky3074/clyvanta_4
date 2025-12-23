@@ -18,10 +18,11 @@
 | **TypeScript** | 5.6.3 |
 | **Styling** | Tailwind CSS 3.4.17 |
 | **Animations** | Framer Motion 11.11.17 |
+| **CMS** | Sanity v3 (Headless CMS) |
 | **Analytics** | Google Analytics 4 + Vercel Speed Insights |
 | **Cookie Consent** | CookieYes |
 | **Forms** | Web3Forms |
-| **Deployment** | Vercel + GitHub Actions |
+| **Deployment** | Vercel + Cloudflare CDN |
 
 ---
 
@@ -88,16 +89,29 @@ clyvanta_4/
 │   ├── app/                   # Next.js App Router
 │   │   ├── page.tsx          # Homepage
 │   │   ├── contact/          # Contact page
-│   │   ├── privacy/          # Privacy policy
-│   │   └── terms/            # Terms of service
+│   │   ├── privacy/          # Privacy policy (CMS-powered)
+│   │   ├── terms/            # Terms of service (CMS-powered)
+│   │   └── studio/           # Sanity Studio (CMS admin)
+│   │       └── [[...index]]/
+│   │           └── page.tsx
 │   ├── components/           # React components
 │   │   ├── Header.tsx        # Fixed navigation
 │   │   ├── Footer.tsx        # Footer with social links
 │   │   ├── Hero.tsx          # Hero section
 │   │   ├── Capabilities.tsx  # Services showcase
-│   │   ├── ContactForm.tsx   # Contact form
+│   │   ├── ContactForm.tsx   # Contact form (Web3Forms)
+│   │   ├── PortableText.tsx  # Sanity rich text renderer
 │   │   └── ...
+│   ├── lib/
+│   │   └── sanity.ts         # Sanity client & queries
+│   ├── sanity/               # Sanity CMS configuration
+│   │   └── schemas/
+│   │       ├── index.ts
+│   │       └── legalPage.ts  # Schema for legal pages
 │   ├── public/images/        # Logos and assets
+│   ├── middleware.ts         # Pathname routing for CMS
+│   ├── sanity.config.ts      # Sanity Studio config
+│   ├── .npmrc                # Legacy peer deps for Sanity
 │   ├── Dockerfile
 │   └── package.json
 └── README.md
@@ -121,29 +135,59 @@ clyvanta_4/
 - Web3Forms integration
 - Fields: Full Name, Work Email, Phone (optional), Company (optional), Message
 
-### Legal
-- `/privacy` - Privacy Policy
-- `/terms` - Terms of Service
+### Legal Pages (CMS-Powered)
+- `/privacy` - Privacy Policy (managed via Sanity CMS)
+- `/terms` - Terms of Service (managed via Sanity CMS)
+
+### CMS Admin
+- `/studio` - Sanity Studio (web-based content editor)
+  - Edit Privacy Policy and Terms of Service
+  - Rich text editing with PortableText
+  - Access: https://clyvanta.com/studio
 
 ---
 
 ## 🔧 Key Features
 
+### Design & Performance
 - ✅ Fully responsive (mobile-first)
 - ✅ Dark theme throughout
 - ✅ Smooth scroll navigation with header offset
 - ✅ Framer Motion animations
+- ✅ SEO optimized with meta tags
+- ✅ WCAG accessibility compliant
+
+### Content Management
+- ✅ **Sanity CMS v3** - Headless CMS for content management
+- ✅ **Web-based Studio** - Edit content at `/studio` route
+- ✅ **PortableText** - Rich text editing with custom styling
+- ✅ **Privacy & Terms** - Legal pages managed via CMS
+
+### Analytics & Tracking
 - ✅ Google Analytics 4 tracking
 - ✅ Vercel Speed Insights
 - ✅ CookieYes cookie consent (dark theme)
+
+### Integrations
+- ✅ **Web3Forms** - Contact form with spam protection
 - ✅ Social links (LinkedIn, X)
-- ✅ Web3Forms contact form
-- ✅ SEO optimized
-- ✅ WCAG accessibility compliant
+- ✅ Cloudflare CDN - WWW to non-WWW redirect
 
 ---
 
 ## 🔗 Configuration
+
+### Sanity CMS
+- **Project ID**: `h7ektk09`
+- **Dataset**: `production`
+- **Studio URL**: `https://clyvanta.com/studio`
+- **CORS Origins**:
+  - `http://localhost:3000` (development)
+  - `https://clyvanta.com` (production)
+- **Free Tier Limits**:
+  - 10,000 documents
+  - 2 users
+  - 500MB assets
 
 ### Analytics
 - **Google Analytics**: ID `G-Q97BH5E9XE` (configured in `app/layout.tsx`)
@@ -154,11 +198,16 @@ clyvanta_4/
 - **Access Key**: `57daab8f-2a1f-419d-952d-22cb97c96213`
 - **Endpoint**: `https://api.web3forms.com/submit`
 - **Spam Protection**: Honeypot field included
+- **Fields**: Full Name, Work Email, Phone (optional), Company (optional), Message
 
 ### Cookie Consent
 - **Service**: CookieYes
 - **Client ID**: `a900971ae185298bc6253a21fac1c9b4`
 - **Theme**: Custom dark theme with orange accents
+
+### Cloudflare CDN
+- **Page Rule 1**: Force HTTPS on all `clyvanta.com` URLs
+- **Page Rule 2**: Redirect `www.clyvanta.com/*` → `https://clyvanta.com/$1` (301)
 
 ---
 
@@ -197,13 +246,25 @@ git push origin main
 
 ## 📝 Recent Updates
 
-- **Dec 22, 2024**: Added Vercel Speed Insights
-- **Dec 22, 2024**: Added social links (LinkedIn, X) to Footer and Contact
-- **Dec 22, 2024**: Redesigned Contact page (consultative approach)
-- **Dec 22, 2024**: Integrated CookieYes with dark theme
-- **Dec 22, 2024**: Added Google Analytics 4
-- **Dec 21, 2024**: Complete dark theme redesign
-- **Dec 21, 2024**: Initial Next.js 14 setup
+### December 23, 2024
+- ✅ **Sanity CMS Integration**: Added headless CMS for content management
+- ✅ **Sanity Studio**: Web-based editor at `/studio` route
+- ✅ **CMS-Powered Legal Pages**: Privacy Policy and Terms of Service now editable via CMS
+- ✅ **PortableText Renderer**: Custom rich text component with site styling
+- ✅ **Middleware**: Conditional Header/Footer exclusion for studio routes
+- ✅ **Cloudflare Redirect**: WWW to non-WWW permanent redirect
+
+### December 22, 2024
+- ✅ Web3Forms contact form integration
+- ✅ Vercel Speed Insights
+- ✅ Social links (LinkedIn, X) to Footer and Contact
+- ✅ Redesigned Contact page (consultative approach)
+- ✅ CookieYes cookie consent with dark theme
+- ✅ Google Analytics 4
+
+### December 21, 2024
+- ✅ Complete dark theme redesign
+- ✅ Initial Next.js 14 setup
 
 ---
 
@@ -228,6 +289,49 @@ rm -rf node_modules package-lock.json
 npm install
 ```
 
+### Sanity CMS issues
+```bash
+# Clear Sanity cache
+rm -rf .sanity
+
+# Restart dev server
+npm run dev
+
+# Access studio at http://localhost:3000/studio
+```
+
+### Build fails on Vercel (Sanity peer dependencies)
+- **Solution**: `.npmrc` file with `legacy-peer-deps=true` is already configured
+- This allows Sanity v3 to work with Next.js 14 despite peer dependency warnings
+
+---
+
+## 🎯 Content Management Workflow
+
+### Editing Legal Pages
+
+1. **Access Sanity Studio**:
+   - Production: `https://clyvanta.com/studio`
+   - Local: `http://localhost:3000/studio`
+
+2. **Edit Content**:
+   - Click "Legal Page" in the sidebar
+   - Select "Privacy Policy" or "Terms of Service"
+   - Edit title, content, or update date
+   - Rich text editor with formatting options
+
+3. **Publish Changes**:
+   - Click "Publish" button
+   - Changes appear immediately on the website
+   - No deployment needed!
+
+### Future CMS Expansion
+
+To make homepage content editable via CMS:
+- Create new schemas for Hero, Stats, Testimonials
+- Update components to fetch from Sanity
+- All within free tier limits (10,000 docs)
+
 ---
 
 ## 📄 License
@@ -236,4 +340,4 @@ ISC - Clyvanta Inc.
 
 ---
 
-**Last Updated**: December 22, 2024
+**Last Updated**: December 23, 2024
