@@ -1,0 +1,7 @@
+# git-crypt encryption rules
+
+# Encrypt all files in secrets/ directory
+secrets/** filter=git-crypt diff=git-crypt
+
+# Encrypt local environment files
+clyvanta-website/.env.local filter=git-crypt diff=git-crypt
