@@ -15,21 +15,21 @@ export default function Capabilities() {
       title: 'Data & AI',
       description:
         'We architect production-ready AI systems that integrate with your existing infrastructure. Not proof-of-concepts that sit on a shelf—systems that process real transactions, make real decisions, and deliver measurable results.',
-      image: '/images/capabilities-ai.png',
+      image: '/images/capabilities-ai.jpg',
     },
     {
       id: 'product-cloud',
       title: 'Product & Cloud',
       description:
         'We build custom software and AI-powered SaaS products that become mission-critical business infrastructure. Platform consolidation. Custom integrations between disparate systems. Turn your idea into scalable revenue.',
-      image: '/images/capabilities-product-new.png',
+      image: '/images/capabilities-product-new.jpg',
     },
     {
       id: 'digital-transformation',
       title: 'Digital Transformation',
       description:
         'We modernize legacy systems or build your first proper software to replace Excel spreadsheets and manual processes. Whether you\'re running on decades-old infrastructure or managing everything in spreadsheets.',
-      image: '/images/capabilities-digital-new.png',
+      image: '/images/capabilities-digital-new.jpg',
     },
   ]
 

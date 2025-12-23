@@ -21,11 +21,33 @@ const manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: 'Clyvanta - Strategic Technology Consultancy',
-  description: 'Enterprise AI, Strategic Software, and Digital Transformation services for mid-market and enterprise companies.',
+  title: 'Enterprise AI & Digital Transformation | Clyvanta',
+  description: 'Production-ready AI systems, cloud infrastructure, and digital transformation for mid-market and enterprise companies. Expert consultancy in Data & AI, Product & Cloud, and Strategic Software.',
   icons: {
     icon: '/images/logo-square.png',
     apple: '/images/logo-square.png',
+  },
+  openGraph: {
+    title: 'Clyvanta - Production-Ready AI, Cloud & Digital Transformation',
+    description: 'We build enterprise systems that ship. Data & AI solutions, custom product & cloud platforms, and digital transformation that actually works.',
+    url: 'https://www.clyvanta.com',
+    siteName: 'Clyvanta',
+    images: [
+      {
+        url: '/images/logo-square.png',
+        width: 800,
+        height: 800,
+        alt: 'Clyvanta - Production-Ready AI, Cloud & Digital Transformation',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Clyvanta - Production-Ready AI, Cloud & Digital Transformation',
+    description: 'We build enterprise systems that ship. Data & AI solutions, custom product & cloud platforms, and digital transformation that actually works.',
+    images: ['/images/logo-square.png'],
   },
 }
 

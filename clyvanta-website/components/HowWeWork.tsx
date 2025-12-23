@@ -69,7 +69,7 @@ export default function HowWeWork() {
             className="md:col-span-2 hidden md:block relative"
           >
             <Image
-              src="/images/methodology.png"
+              src="/images/methodology.jpg"
               alt="Our Methodology"
               width={500}
               height={500}
