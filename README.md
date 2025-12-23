@@ -190,7 +190,8 @@ clyvanta_4/
    - `NEXT_PUBLIC_SANITY_PROJECT_ID` - Your Sanity project ID
    - `NEXT_PUBLIC_SANITY_DATASET` - Dataset name (usually 'production')
    - `NEXT_PUBLIC_GA_MEASUREMENT_ID` - Google Analytics measurement ID
-   - `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` - Web3Forms access key
+   - `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` - Web3Forms contact form key
+   - `NEXT_PUBLIC_WEB3FORMS_NEWSLETTER_KEY` - Web3Forms newsletter key
    - `NEXT_PUBLIC_COOKIEYES_CLIENT_ID` - CookieYes client ID
 
 3. **NEVER commit `.env.local`** - It's already in `.gitignore`
@@ -198,6 +199,38 @@ clyvanta_4/
 4. **For production deployment** (Vercel):
    - Add all environment variables in Vercel dashboard
    - Settings → Environment Variables → Add each variable
+
+### Encrypted Credentials (git-crypt)
+
+All project credentials are stored in an **encrypted file** that's safe to commit to Git.
+
+**Location**: `secrets/CREDENTIALS.md` (encrypted with git-crypt)
+
+**What's inside**:
+- All environment variables
+- GitHub SSH keys
+- Deployment credentials
+- Setup instructions for new developers
+
+**To access on a new machine**:
+1. Get unlock key from **Apple Passwords**: "Git-crypt Key - Vicky3074/Clyvanta_4"
+2. Unlock the repository:
+   ```bash
+   # Decode and save unlock key
+   echo "[BASE64_KEY_FROM_APPLE_PASSWORDS]" | base64 -d > ~/clyvanta-unlock.key
+
+   # Unlock repository
+   cd clyvanta_4
+   git-crypt unlock ~/clyvanta-unlock.key
+
+   # View all credentials
+   cat secrets/CREDENTIALS.md
+   ```
+
+**Security**:
+- ✅ Encrypted in Git (safe to push to GitHub)
+- ✅ Unlock key stored in Apple Passwords (synced via iCloud)
+- ✅ Also backed up in Bitwarden (optional)
 
 ### Sanity CMS
 - **Studio URL**: `https://clyvanta.com/studio`
@@ -264,7 +297,11 @@ git push origin main
 
 ## 📝 Recent Updates
 
-### December 23, 2024
+### December 23, 2025
+- ✅ **Security Hardening**: Migrated all credentials to environment variables
+- ✅ **git-crypt Integration**: Encrypted credentials vault in `secrets/CREDENTIALS.md`
+- ✅ **Separate Web3Forms Keys**: Contact form and newsletter use dedicated keys
+- ✅ **Content Update**: Refined ValueProposition with McKinsey statistics
 - ✅ **Sanity CMS Integration**: Added headless CMS for content management
 - ✅ **Sanity Studio**: Web-based editor at `/studio` route
 - ✅ **CMS-Powered Legal Pages**: Privacy Policy and Terms of Service now editable via CMS
