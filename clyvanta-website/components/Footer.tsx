@@ -20,7 +20,7 @@ export default function Footer() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: '57daab8f-2a1f-419d-952d-22cb97c96213',
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
           email: email,
           subject: 'New Newsletter Subscription - Clyvanta',
           from_name: 'Clyvanta Newsletter',
