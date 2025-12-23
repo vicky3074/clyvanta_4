@@ -47,7 +47,7 @@ export default function Hero() {
         }} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full pb-16">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
         {/* Main Headline */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

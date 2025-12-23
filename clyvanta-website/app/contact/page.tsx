@@ -178,8 +178,7 @@ export default function ContactPage() {
               {/* Trust Message */}
               <div className="mt-6 pt-6 border-t border-white/5">
                 <p className="text-sm text-blue-200 text-center leading-relaxed">
-                  We'll review your message and respond within 1 business day.<br />
-                  No obligation. No sales pressure.
+                  We'll review your message and respond within 1 business day.
                 </p>
               </div>
             </div>
