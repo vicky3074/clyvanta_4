@@ -37,3 +37,4 @@ clyvanta-website/next-env.d.ts
 
 # Claude temporary files
 .claude/
+node_modules

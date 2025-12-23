@@ -50,7 +50,7 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
       <input
         type="hidden"
         name="access_key"
-        value="57daab8f-2a1f-419d-952d-22cb97c96213"
+        value={process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY}
       />
 
       {/* Honeypot for spam protection */}

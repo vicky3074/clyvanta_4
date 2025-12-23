@@ -177,9 +177,29 @@ clyvanta_4/
 
 ## 🔗 Configuration
 
+### Environment Variables
+
+**IMPORTANT**: All credentials are now stored in environment variables for security.
+
+1. **Copy the template file**:
+   ```bash
+   cp clyvanta-website/.env.example clyvanta-website/.env.local
+   ```
+
+2. **Fill in your credentials** in `.env.local`:
+   - `NEXT_PUBLIC_SANITY_PROJECT_ID` - Your Sanity project ID
+   - `NEXT_PUBLIC_SANITY_DATASET` - Dataset name (usually 'production')
+   - `NEXT_PUBLIC_GA_MEASUREMENT_ID` - Google Analytics measurement ID
+   - `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` - Web3Forms access key
+   - `NEXT_PUBLIC_COOKIEYES_CLIENT_ID` - CookieYes client ID
+
+3. **NEVER commit `.env.local`** - It's already in `.gitignore`
+
+4. **For production deployment** (Vercel):
+   - Add all environment variables in Vercel dashboard
+   - Settings → Environment Variables → Add each variable
+
 ### Sanity CMS
-- **Project ID**: `h7ektk09`
-- **Dataset**: `production`
 - **Studio URL**: `https://clyvanta.com/studio`
 - **CORS Origins**:
   - `http://localhost:3000` (development)
@@ -190,19 +210,17 @@ clyvanta_4/
   - 500MB assets
 
 ### Analytics
-- **Google Analytics**: ID `G-Q97BH5E9XE` (configured in `app/layout.tsx`)
+- **Google Analytics**: Configured via environment variable in `app/layout.tsx`
 - **Speed Insights**: Vercel component added to track performance
 
 ### Form Submission
 - **Service**: Web3Forms
-- **Access Key**: `57daab8f-2a1f-419d-952d-22cb97c96213`
 - **Endpoint**: `https://api.web3forms.com/submit`
 - **Spam Protection**: Honeypot field included
 - **Fields**: Full Name, Work Email, Phone (optional), Company (optional), Message
 
 ### Cookie Consent
 - **Service**: CookieYes
-- **Client ID**: `a900971ae185298bc6253a21fac1c9b4`
 - **Theme**: Custom dark theme with orange accents
 
 ### Cloudflare CDN

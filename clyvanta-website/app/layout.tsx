@@ -69,7 +69,7 @@ export default async function RootLayout({
         <script
           id="cookieyes"
           type="text/javascript"
-          src="https://cdn-cookieyes.com/client_data/a900971ae185298bc6253a21fac1c9b4/script.js"
+          src={`https://cdn-cookieyes.com/client_data/${process.env.NEXT_PUBLIC_COOKIEYES_CLIENT_ID}/script.js`}
         />
       </head>
       <body className={`${inter.variable} ${manrope.variable} font-sans`}>
@@ -77,7 +77,7 @@ export default async function RootLayout({
           <>
             {/* Google Analytics */}
             <Script
-              src="https://www.googletagmanager.com/gtag/js?id=G-Q97BH5E9XE"
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
               strategy="afterInteractive"
             />
             <Script id="google-analytics" strategy="afterInteractive">
@@ -85,7 +85,7 @@ export default async function RootLayout({
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'G-Q97BH5E9XE');
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
               `}
             </Script>
             <Header />
